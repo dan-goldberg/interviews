@@ -1,0 +1,642 @@
+Datestamp,Restaurant visited:,Rating out of 5,App Experience,Pickup Experience,Timing Accuracy,Order Quality
+11/20/2015,Big Al's,5,Great,Great,Great,Great
+11/20/2015,Big Al's,5,Great,Great,Great,Great
+11/20/2015,Big Al's,5,Great,Great,Great,Great
+11/20/2015,Big Al's,3,Needs improvement,Great,Needs Improvement,Great
+11/29/2015,Little Al's,5,Great,Great,Great,Great
+12/3/2015,Little Al's,2,Great,Needs improvement,Needs Improvement,Needs Improvement
+12/3/2015,Little Al's,5,Great,Great,Great,Great
+12/4/2015,Little Al's,5,Great,Great,Great,Great
+12/4/2015,Little Al's,5,Great,Great,Great,Great
+12/4/2015,Little Al's,5,Great,Great,Great,Great
+11/20/2015,Italian Pizza,3,Great,Needs improvement,Great,Great
+11/12/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/12/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/12/2015,Artisan Cellar,1,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/13/2015,Artisan Cellar,4,Great,Great,Needs Improvement,Great
+11/13/2015,Artisan Cellar,2,Great,Needs improvement,Needs Improvement,Great
+11/16/2015,Artisan Cellar,5,Great,Great,Great,Great
+11/16/2015,Artisan Cellar,5,Great,Great,Needs Improvement,Great
+12/3/2015,Beattie's,5,Needs improvement,Great,Great,Great
+12/1/2015,Coffee and Donuts,5,Needs improvement,Great,Great,Great
+11/16/2015,Belcher's,5,Great,Great,Great,Great
+11/23/2015,Belcher's,4,Great,Great,Great,Great
+12/2/2015,Belcher's,5,Great,Great,Great,Great
+12/2/2015,Belcher's,5,Great,Great,Great,Great
+11/20/2015,BBBQ's,5,Great,Great,Great,Great
+11/21/2015,BBBQ's,5,Great,Great,Great,Great
+11/23/2015,BBBQ's,5,Great,Great,Great,Great
+11/23/2015,BBBQ's,5,Great,Great,Great,Great
+11/23/2015,BBBQ's,5,Great,Great,Great,Great
+11/23/2015,BBBQ's,5,Great,Great,Great,Great
+11/24/2015,BBBQ's,5,Great,Great,Great,Great
+11/24/2015,BBBQ's,5,Great,Great,Great,Great
+11/24/2015,BBBQ's,5,Great,Great,Great,Great
+11/24/2015,BBBQ's,4,Great,Great,Great,Great
+11/24/2015,BBBQ's,5,Great,Great,Great,Great
+11/24/2015,BBBQ's,5,Great,Great,Great,Great
+11/25/2015,BBBQ's,4,Great,Great,Great,Great
+11/25/2015,BBBQ's,5,Great,Great,Great,Great
+11/25/2015,BBBQ's,5,Great,Great,Great,Great
+11/25/2015,BBBQ's,5,Great,Great,Great,Great
+11/26/2015,BBBQ's,5,Great,Great,Great,Great
+11/27/2015,BBBQ's,5,Great,Great,Great,Great
+12/1/2015,BBBQ's,5,Great,Great,Great,Great
+12/1/2015,BBBQ's,5,Great,Great,Great,Great
+12/2/2015,BBBQ's,5,Great,Great,Great,Great
+11/12/2015,Freddy's,5,Great,Great,Great,Great
+11/12/2015,Freddy's,5,Great,Great,Great,Great
+11/13/2015,Freddy's,3,Great,Needs improvement,Needs Improvement,Great
+11/23/2015,Blackwood's,4,Needs improvement,Great,Great,Great
+11/19/2015,Smokey's,5,Great,Great,Great,Great
+11/19/2015,Smokey's,1,Great,Needs improvement,Needs Improvement,Needs Improvement
+11/20/2015,Smokey's,5,Great,Great,Great,Great
+11/23/2015,Smokey's,5,Great,Great,Great,Great
+11/13/2015,Bongiorno,1,Needs improvement,Needs improvement,Needs Improvement,Great
+11/13/2015,Bongiorno,4,Great,Great,Great,Great
+11/16/2015,Bongiorno,5,Great,Great,Great,Great
+11/17/2015,Bongiorno,5,Great,Great,Great,Great
+11/20/2015,Bongiorno,5,Great,Needs improvement,Great,Great
+11/20/2015,Juicer's,3,Great,Needs improvement,Great,Great
+11/13/2015,Bugatti's,5,Great,Great,Great,Great
+11/18/2015,Bugatti's,5,Great,Great,Great,Great
+12/4/2015,Bugatti's,3,Great,Great,Great,Great
+11/18/2015,Cafe M,5,Great,Great,Great,Great
+11/20/2015,Cafe M,5,Needs improvement,Great,Great,Great
+11/23/2015,Cafe M,5,Great,Great,Great,Great
+11/23/2015,Cafe M,5,Great,Great,Great,Great
+11/26/2015,Cafe M,5,Great,Great,Great,Great
+11/27/2015,Cafe M,5,Great,Great,Needs Improvement,Great
+12/1/2015,Cafe M,5,Great,Great,Great,Great
+11/12/2015,Cantina ,4,Great,Needs improvement,Needs Improvement,Great
+11/12/2015,Cantina ,5,Great,Great,Great,Great
+11/13/2015,Cantina ,5,Great,Great,Great,Great
+11/13/2015,Cantina ,5,Great,Great,Great,Great
+11/13/2015,Cantina ,4,Great,Needs improvement,Needs Improvement,Needs Improvement
+11/20/2015,Chap's Grill,5,Great,Great,Great,Great
+11/20/2015,Chap's Grill,5,Great,Great,Great,Great
+12/1/2015,Chap's Grill,5,Great,Great,Great,Great
+12/1/2015,Chap's Grill,4,Great,Great,Great,Great
+12/2/2015,Chap's Grill,4,Needs improvement,Needs improvement,Great,Great
+11/21/2015,Chen's Chinese,2,Great,Needs improvement,Great,Great
+11/30/2015,Raw,5,Great,Great,Great,Great
+12/4/2015,Raw,5,Great,Great,Great,Great
+12/8/2015,Raw,5,Great,Great,Great,Great
+12/2/2015,Craft,5,Great,Great,Great,Great
+12/2/2015,Craft,5,Great,Needs improvement,Great,Great
+11/18/2015,Lobster House,2,Needs improvement,Great,Needs Improvement,Great
+11/20/2015,Lobster House,4,Great,Great,Great,Needs Improvement
+11/20/2015,Lobster House,5,Great,Great,Great,Great
+11/20/2015,Lobster House,4,Great,Great,Great,Great
+11/21/2015,Lobster House,5,Great,Great,Great,Great
+11/25/2015,Lobster House,5,Great,Great,Great,Great
+12/1/2015,Lobster House,3,Great,Great,Great,Great
+12/3/2015,Lobster House,5,Great,Great,Great,Great
+11/20/2015,Fisherman's Seafood,5,Great,Great,Great,Great
+11/20/2015,Fisherman's Seafood,4,Great,Great,Great,Great
+11/20/2015,Fisherman's Seafood,5,Great,Great,Great,Great
+11/25/2015,Fisherman's Seafood,3,Great,Needs improvement,Great,Needs Improvement
+11/25/2015,Fisherman's Seafood,2,Needs improvement,Needs improvement,Needs Improvement,Needs Improvement
+11/18/2015,Da Burger,4,Great,Great,Great,Great
+11/19/2015,Da Burger,5,Great,Great,Great,Great
+11/20/2015,Da Burger,5,Great,Great,Great,Great
+11/25/2015,Da Burger,5,Great,Great,Great,Great
+11/25/2015,Da Burger,5,Great,Great,Great,Great
+11/26/2015,Da Burger,5,Great,Great,Great,Great
+11/27/2015,Da Burger,5,Great,Great,Great,Great
+11/27/2015,Da Burger,5,Great,Great,Great,Great
+11/27/2015,Da Burger,5,Great,Great,Great,Great
+11/30/2015,Da Burger,5,Great,Great,Great,Great
+11/30/2015,Da Burger,5,Great,Great,Great,Great
+11/30/2015,Da Burger,5,Great,Great,Great,Great
+11/18/2015,Dick's Diner,5,Great,Great,Great,Great
+11/12/2015,Fresh Kitchen,5,Needs improvement,Great,Great,Great
+11/12/2015,Fresh Kitchen,5,Great,Great,Great,Great
+11/12/2015,Fresh Kitchen,5,Great,Great,Great,Great
+11/13/2015,Fresh Kitchen,5,Great,Great,Great,Great
+11/13/2015,Fresh Kitchen,5,Great,Great,Great,Great
+11/13/2015,Fresh Kitchen,5,Great,Great,Great,Great
+11/13/2015,Fresh Kitchen,5,Needs improvement,Great,Great,Great
+11/13/2015,Fresh Kitchen,4,Great,Great,Needs Improvement,Great
+11/13/2015,Fresh Kitchen,4,Great,Needs improvement,Great,Needs Improvement
+11/13/2015,Fresh Kitchen,4,Great,Needs improvement,Needs Improvement,Great
+11/13/2015,Fresh Kitchen,5,Great,Great,Great,Great
+11/13/2015,Fresh Kitchen,4,Great,Great,Great,Great
+11/12/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/12/2015,Donuts N Coffee,3,Needs improvement,Great,Great,Great
+11/13/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/13/2015,Donuts N Coffee,2,Needs improvement,Great,Great,Great
+11/13/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/13/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/13/2015,Donuts N Coffee,4,Great,Great,Great,Great
+11/13/2015,Donuts N Coffee,5,Needs improvement,Needs improvement,Great,Great
+11/13/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/14/2015,Donuts N Coffee,5,Great,Great,Needs Improvement,Great
+11/16/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/16/2015,Donuts N Coffee,4,Great,Great,Great,Great
+11/16/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/16/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/16/2015,Donuts N Coffee,3,Great,Needs improvement,Great,Great
+11/17/2015,Donuts N Coffee,5,Great,Needs improvement,Great,Great
+11/17/2015,Donuts N Coffee,3,Great,Needs improvement,Great,Great
+11/17/2015,Donuts N Coffee,2,Needs improvement,Great,Great,Needs Improvement
+11/17/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/17/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/18/2015,Donuts N Coffee,4,Great,Great,Great,Great
+11/18/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/18/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/18/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/18/2015,Donuts N Coffee,4,Great,Great,Great,Great
+11/18/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/19/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/19/2015,Donuts N Coffee,5,Great,Great,Great,Great
+11/19/2015,Donuts N Coffee,5,Great,Great,Great,Great
+12/3/2015,Dylan's,4,Great,Great,Needs Improvement,Great
+11/24/2015,The Egg Co.,5,Great,Great,Great,Great
+11/24/2015,The Egg Co.,5,Great,Great,Great,Great
+11/24/2015,The Egg Co.,3,Needs improvement,Great,Great,Great
+11/24/2015,The Egg Co.,5,Great,Great,Great,Great
+11/25/2015,The Egg Co.,5,Great,Great,Great,Great
+11/24/2015,The Egg Co.,5,Great,Great,Great,Great
+11/24/2015,The Egg Co.,5,Great,Great,Great,Great
+11/25/2015,The Egg Co.,5,Great,Great,Great,Great
+11/25/2015,The Egg Co.,5,Great,Great,Great,Great
+12/1/2015,The Egg Co.,5,Needs improvement,Great,Great,Great
+11/30/2015,Sushi House,5,Great,Great,Great,Great
+11/24/2015,Macho Taqueria,5,Great,Great,Great,Great
+12/2/2015,Macho Taqueria,5,Great,Great,Great,Great
+11/19/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/19/2015,Big Boy Burger,3,Great,Needs improvement,Great,Needs Improvement
+11/19/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/19/2015,Big Boy Burger,4,Great,Needs improvement,Great,Great
+11/19/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/19/2015,Big Boy Burger,5,Needs improvement,Great,Great,Great
+11/19/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/20/2015,Big Boy Burger,4,Great,Needs improvement,Great,Great
+11/20/2015,Big Boy Burger,5,Great,Great,Needs Improvement,Great
+11/20/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/20/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/20/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/20/2015,Big Boy Burger,4,Great,Great,Great,Needs Improvement
+11/20/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/23/2015,Big Boy Burger,4,Needs improvement,Great,Great,Great
+11/23/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/23/2015,Big Boy Burger,2,Great,Great,Great,Needs Improvement
+11/23/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/23/2015,Big Boy Burger,5,Needs improvement,Great,Great,Great
+11/23/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/24/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/24/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/24/2015,Big Boy Burger,3,Great,Great,Great,Needs Improvement
+11/24/2015,Big Boy Burger,4,Great,Great,Great,Great
+11/24/2015,Big Boy Burger,4,Great,Great,Needs Improvement,Great
+11/24/2015,Big Boy Burger,4,Great,Great,Great,Great
+11/24/2015,Big Boy Burger,4,Great,Needs improvement,Great,Great
+11/24/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/25/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/25/2015,Big Boy Burger,5,Great,Needs improvement,Great,Great
+11/25/2015,Big Boy Burger,5,Great,Great,Great,Great
+11/26/2015,Big Boy Burger,4,Great,Great,Great,Needs Improvement
+11/29/2015,Big Boy Burger,5,Great,Great,Great,Great
+12/3/2015,Big Boy Burger,3,Needs improvement,Great,Great,Needs Improvement
+12/4/2015,Big Boy Burger,2,Great,Great,Great,Needs Improvement
+11/20/2015,Yummy Pita,1,Needs improvement,Needs improvement,Great,Great
+11/19/2015,Healthy Choice,4,Great,Great,Needs Improvement,Great
+11/19/2015,Healthy Choice,5,Great,Great,Great,Great
+11/20/2015,Crepes!,5,Needs improvement,Great,Great,Great
+11/23/2015,Crepes!,5,Great,Great,Great,Great
+11/23/2015,Crepes!,5,Great,Great,Great,Great
+11/23/2015,Crepes!,5,Great,Great,Great,Great
+11/23/2015,Crepes!,5,Great,Great,Great,Great
+11/24/2015,Crepes!,5,Great,Great,Great,Great
+11/25/2015,Crepes!,5,Great,Great,Great,Great
+11/25/2015,Crepes!,5,Great,Great,Great,Great
+11/27/2015,Crepes!,5,Great,Great,Great,Great
+11/27/2015,Crepes!,5,Great,Great,Great,Great
+11/27/2015,Crepes!,5,Great,Great,Great,Great
+11/30/2015,Crepes!,5,Needs improvement,Great,Great,Great
+12/3/2015,Crepes!,5,Great,Great,Great,Great
+11/13/2015,Fresh Foods,5,Great,Great,Great,Great
+11/16/2015,Fresh Foods,5,Great,Great,Great,Great
+11/16/2015,Fresh Foods,5,Great,Great,Great,Great
+11/17/2015,Fresh Foods,5,Great,Great,Great,Great
+11/20/2015,Fresh Foods,4,Great,Needs improvement,Needs Improvement,Great
+11/20/2015,Fresh Foods,5,Great,Great,Great,Great
+11/23/2015,Fresh Foods,3,Needs improvement,Great,Great,Needs Improvement
+11/23/2015,Fresh Foods,5,Great,Great,Great,Great
+11/23/2015,Fresh Foods,5,Great,Great,Great,Great
+11/24/2015,Fresh Foods,3,Great,Needs improvement,Great,Needs Improvement
+11/24/2015,Fresh Foods,5,Great,Needs improvement,Great,Great
+11/24/2015,Fresh Foods,4,Great,Great,Great,Needs Improvement
+11/24/2015,Fresh Foods,5,Great,Great,Great,Great
+11/24/2015,Fresh Foods,3,Great,Needs improvement,Needs Improvement,Great
+11/24/2015,Fresh Foods,3,Needs improvement,Needs improvement,Needs Improvement,Great
+11/24/2015,Fresh Foods,5,Needs improvement,Great,Needs Improvement,Great
+11/25/2015,Fresh Foods,4,Great,Great,Great,Needs Improvement
+12/2/2015,Not So Fresh,5,Great,Great,Great,Great
+11/17/2015,Freshy,5,Great,Great,Great,Great
+11/17/2015,Freshy,5,Great,Great,Great,Great
+11/17/2015,Freshy,4,Great,Great,Great,Great
+11/19/2015,Freshy,5,Great,Great,Great,Great
+11/20/2015,Freshy,4,Great,Needs improvement,Great,Great
+11/12/2015,Gino's,5,Great,Great,Great,Great
+11/13/2015,Sweet Treats,2,Great,Needs improvement,Needs Improvement,Great
+11/13/2015,Sweet Treats,5,Great,Great,Great,Great
+11/16/2015,Sweet Treats,5,Great,Great,Great,Great
+11/16/2015,Sweet Treats,5,Needs improvement,Great,Great,Great
+11/17/2015,Sweet Treats,5,Great,Great,Great,Great
+11/18/2015,Sweet Treats,5,Great,Great,Great,Great
+11/18/2015,Sweet Treats,3,Great,Great,Needs Improvement,Great
+11/20/2015,Sweet Treats,5,Great,Great,Great,Great
+11/18/2015,Baker Haus,5,Great,Great,Great,Great
+11/24/2015,Baker Haus,5,Great,Great,Great,Great
+11/16/2015,Habanero,1,Needs improvement,Needs improvement,Great,Needs Improvement
+11/16/2015,Habanero,5,Great,Great,Great,Great
+11/16/2015,Habanero,3,Needs improvement,Great,Great,Great
+11/16/2015,Habanero,5,Great,Great,Great,Great
+11/17/2015,Habanero,2,Great,Needs improvement,Great,Needs Improvement
+11/17/2015,Habanero,2,Needs improvement,Needs improvement,Great,Great
+11/18/2015,Habanero,4,Great,Great,Great,Great
+11/18/2015,Habanero,3,Great,Needs improvement,Great,Great
+11/18/2015,Habanero,2,Great,Needs improvement,Great,Great
+11/18/2015,Habanero,5,Great,Needs improvement,Great,Great
+11/18/2015,Habanero,1,Needs improvement,Great,Great,Needs Improvement
+11/20/2015,Hot Cafe,5,Great,Great,Great,Needs Improvement
+11/24/2015,Hot Cafe,4,Great,Great,Great,Great
+11/25/2015,Hot Cafe,5,Great,Great,Great,Great
+11/28/2015,Hot Cafe,5,Great,Great,Great,Great
+11/20/2015,Deli & Bagel,5,Great,Great,Great,Great
+11/30/2015,Deli & Bagel,5,Great,Great,Great,Great
+11/30/2015,Deli & Bagel,5,Great,Great,Great,Great
+11/30/2015,Deli & Bagel,5,Great,Great,Great,Great
+12/1/2015,Deli & Bagel,5,Great,Great,Great,Great
+12/1/2015,Deli & Bagel,5,Great,Great,Great,Great
+12/1/2015,Deli & Bagel,5,Great,Great,Great,Great
+12/1/2015,Deli & Bagel,5,Great,Great,Great,Great
+12/1/2015,Deli & Bagel,5,Great,Great,Great,Great
+12/2/2015,Deli & Bagel,1,Needs improvement,Great,Great,Great
+11/19/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/19/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/19/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/19/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/20/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/20/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/20/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/20/2015,Superfood Juicery,5,Needs improvement,Great,Great,Great
+11/23/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/24/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/24/2015,Superfood Juicery,5,Great,Great,Great,Great
+12/2/2015,Superfood Juicery,5,Great,Great,Great,Great
+12/2/2015,Superfood Juicery,5,Great,Great,Great,Great
+11/18/2015,Gourmet House,5,Great,Great,Great,Great
+11/17/2015,51 Restaurant,3,Needs improvement,Great,Great,Needs Improvement
+12/7/2015,51 Restaurant,4,Great,Needs improvement,Great,Great
+11/16/2015,Falafel's,2,Great,Needs improvement,Needs Improvement,Great
+11/19/2015,Falafel's,5,Great,Great,Great,Great
+11/20/2015,Falafel's,5,Great,Great,Great,Great
+11/20/2015,Falafel's,5,Great,Needs improvement,Great,Great
+11/20/2015,Falafel's,3,Great,Needs improvement,Great,Great
+11/23/2015,Falafel's,5,Great,Great,Great,Great
+11/25/2015,Falafel's,2,Great,Needs improvement,Needs Improvement,Needs Improvement
+11/25/2015,Falafel's,1,Great,Needs improvement,Needs Improvement,Needs Improvement
+11/30/2015,Falafel's,4,Great,Needs improvement,Great,Great
+11/30/2015,Falafel's,4,Needs improvement,Great,Needs Improvement,Great
+12/2/2015,Falafel's,5,Great,Great,Great,Great
+12/4/2015,Falafel's,2,Great,Great,Great,Needs Improvement
+11/13/2015,Jack's,5,Great,Great,Great,Great
+11/23/2015,Jack's,4,Needs improvement,Great,Great,Needs Improvement
+11/24/2015,Jack's,2,Great,Great,Great,Needs Improvement
+11/25/2015,Jack's,5,Great,Great,Great,Great
+12/3/2015,Jiffy Bagels,5,Great,Great,Great,Great
+11/25/2015,Jimmy's,5,Great,Great,Great,Great
+11/13/2015,Kathmandu Restaurant,3,Great,Needs improvement,Needs Improvement,Needs Improvement
+11/24/2015,Kathmandu Restaurant,4,Needs improvement,Great,Great,Great
+11/27/2015,Kathmandu Restaurant,3,Great,Great,Great,Great
+11/24/2015,Kebab Express,1,Great,Needs improvement,Great,Needs Improvement
+11/26/2015,Kebab Express,4,Great,Needs improvement,Needs Improvement,Needs Improvement
+11/26/2015,Kebab Express,4,Great,Needs improvement,Great,Needs Improvement
+11/26/2015,Kebab Express,2,Needs improvement,Needs improvement,Needs Improvement,Great
+11/26/2015,Kebab Express,5,Great,Great,Great,Great
+11/27/2015,Kebab Express,4,Great,Needs improvement,Needs Improvement,Great
+11/27/2015,Kebab Express,2,Needs improvement,Needs improvement,Needs Improvement,Needs Improvement
+12/2/2015,Kebab Express,4,Great,Great,Needs Improvement,Great
+11/23/2015,Klay's Kitchen,4,Great,Great,Great,Great
+11/23/2015,Klay's Kitchen,5,Great,Great,Great,Great
+11/24/2015,Klay's Kitchen,5,Great,Great,Great,Great
+11/24/2015,Klay's Kitchen,5,Needs improvement,Great,Great,Great
+11/25/2015,Klay's Kitchen,5,Great,Great,Great,Great
+12/1/2015,Klay's Kitchen,4,Great,Great,Great,Great
+12/3/2015,Klay's Kitchen,4,Great,Great,Great,Great
+11/19/2015,Kim's Fresh Foods,5,Great,Great,Great,Great
+11/20/2015,Kim's Fresh Foods,5,Great,Great,Great,Great
+11/23/2015,Kim's Fresh Foods,5,Great,Great,Great,Great
+11/24/2015,Kim's Fresh Foods,1,Needs improvement,Needs improvement,Needs Improvement,Great
+11/17/2015,LA Cafe,4,Great,Needs improvement,Great,Great
+11/19/2015,LA Cafe,5,Great,Great,Great,Great
+11/20/2015,LA Cafe,2,Great,Needs improvement,Needs Improvement,Great
+11/20/2015,LA Cafe,2,Great,Needs improvement,Great,Great
+11/23/2015,LA Cafe,5,Great,Great,Great,Great
+11/19/2015,Little Fish,5,Great,Great,Great,Great
+11/19/2015,Little Fish,5,Great,Great,Great,Great
+11/20/2015,Little Fish,4,Great,Great,Great,Great
+11/22/2015,Little Fish,5,Great,Great,Great,Great
+11/22/2015,Little Fish,5,Great,Great,Great,Great
+11/19/2015,Loopy Juice,5,Great,Great,Great,Great
+11/20/2015,Loopy Juice,5,Great,Great,Great,Great
+11/20/2015,Loopy Juice,5,Great,Great,Great,Great
+11/20/2015,Loopy Juice,5,Great,Great,Great,Great
+11/20/2015,Loopy Juice,5,Great,Great,Great,Great
+11/20/2015,Loopy Juice,5,Great,Great,Great,Great
+11/23/2015,Loopy Juice,5,Great,Great,Great,Great
+11/24/2015,Loopy Juice,5,Great,Great,Great,Great
+11/24/2015,Loopy Juice,5,Great,Great,Great,Great
+11/25/2015,Loopy Juice,5,Great,Great,Great,Great
+11/25/2015,Loopy Juice,5,Great,Great,Great,Great
+11/16/2015,Lucy's Bakery,5,Great,Great,Great,Great
+11/20/2015,Lucy's Bakery,4,Great,Needs improvement,Great,Great
+11/24/2015,Lucy's Bakery,4,Great,Great,Great,Great
+12/2/2015,Lucy's Bakery,5,Great,Great,Great,Great
+12/2/2015,Lucy's Bakery,5,Great,Great,Great,Great
+11/16/2015,Mezza's,3,Needs improvement,Great,Great,Needs Improvement
+11/16/2015,Mezza's,5,Great,Great,Great,Great
+11/16/2015,Mezza's,3,Needs improvement,Great,Great,Great
+11/17/2015,Mezza's,4,Great,Great,Great,Needs Improvement
+11/17/2015,Mezza's,4,Great,Great,Great,Needs Improvement
+11/17/2015,Mezza's,5,Great,Great,Great,Great
+11/17/2015,Mezza's,1,Needs improvement,Needs improvement,Needs Improvement,Needs Improvement
+11/18/2015,Mezza's,4,Great,Great,Great,Great
+11/18/2015,Mezza's,5,Great,Needs improvement,Great,Great
+11/18/2015,Mezza's,5,Needs improvement,Great,Great,Great
+11/18/2015,Mezza's,4,Needs improvement,Great,Great,Great
+11/18/2015,Mezza's,5,Great,Great,Great,Great
+11/18/2015,Mezza's,5,Great,Great,Great,Great
+11/18/2015,Mezza's,5,Great,Great,Great,Great
+11/19/2015,Mezza's,5,Great,Great,Great,Great
+11/19/2015,Mezza's,5,Great,Great,Great,Great
+11/20/2015,Mezza's,2,Great,Needs improvement,Great,Needs Improvement
+11/20/2015,Mezza's,4,Great,Great,Great,Great
+11/20/2015,Mezza's,5,Great,Great,Great,Great
+11/23/2015,Mezza's,3,Great,Great,Great,Great
+11/30/2015,Mezza's,5,Great,Great,Great,Great
+11/30/2015,Mezza's,5,Great,Great,Great,Great
+11/30/2015,Mezza's,4,Needs improvement,Great,Great,Great
+11/30/2015,Mezza's,5,Great,Great,Great,Great
+12/1/2015,Mezza's,5,Needs improvement,Great,Great,Great
+12/1/2015,Mezza's,5,Great,Great,Great,Great
+12/1/2015,Mezza's,5,Great,Great,Great,Great
+12/1/2015,Mezza's,4,Great,Needs improvement,Great,Great
+12/1/2015,Mezza's,5,Great,Great,Great,Great
+12/1/2015,Mezza's,4,Needs improvement,Great,Great,Great
+12/2/2015,Mezza's,5,Great,Great,Great,Great
+12/2/2015,Mezza's,5,Great,Great,Great,Great
+12/2/2015,Mezza's,5,Great,Great,Great,Great
+12/2/2015,Mezza's,5,Great,Needs improvement,Great,Great
+12/2/2015,Mezza's,5,Great,Great,Great,Great
+12/2/2015,Mezza's,5,Great,Great,Great,Great
+12/3/2015,Mezza's,5,Great,Needs improvement,Great,Great
+12/1/2015,Green's,5,Great,Great,Great,Great
+11/12/2015,The Greenery,5,Great,Great,Great,Great
+11/12/2015,The Greenery,5,Great,Great,Great,Great
+11/12/2015,The Greenery,5,Great,Great,Great,Great
+11/12/2015,The Greenery,5,Great,Great,Great,Great
+11/12/2015,The Greenery,5,Great,Great,Great,Great
+11/12/2015,The Greenery,5,Great,Great,Great,Great
+11/13/2015,The Greenery,5,Great,Great,Needs Improvement,Great
+11/13/2015,The Greenery,5,Great,Great,Needs Improvement,Great
+11/13/2015,The Greenery,3,Great,Needs improvement,Great,Great
+11/13/2015,The Greenery,3,Needs improvement,Needs improvement,Needs Improvement,Needs Improvement
+11/16/2015,The Greenery,5,Great,Great,Great,Great
+11/17/2015,The Greenery,5,Great,Great,Great,Great
+11/17/2015,The Greenery,4,Great,Great,Great,Needs Improvement
+11/17/2015,The Greenery,5,Great,Great,Great,Great
+11/17/2015,The Greenery,4,Needs improvement,Great,Great,Great
+11/18/2015,The Greenery,4,Great,Great,Great,Great
+11/18/2015,The Greenery,5,Great,Great,Great,Great
+11/18/2015,The Greenery,1,Needs improvement,Needs improvement,Needs Improvement,Great
+11/20/2015,The Greenery,5,Great,Great,Great,Great
+11/20/2015,The Greenery,5,Great,Great,Great,Great
+11/24/2015,The Greenery,5,Needs improvement,Great,Great,Great
+12/2/2015,The Greenery,5,Great,Great,Great,Great
+11/24/2015,Moe's,5,Great,Great,Great,Great
+11/17/2015,Mrs. Cookie,4,Great,Great,Great,Great
+11/17/2015,Mrs. Cookie,4,Great,Great,Great,Great
+11/12/2015,Big Burrito,5,Great,Needs improvement,Great,Great
+11/12/2015,Big Burrito,5,Great,Needs improvement,Great,Great
+11/13/2015,Big Burrito,5,Great,Great,Great,Great
+11/13/2015,Big Burrito,5,Great,Great,Great,Great
+11/12/2015,Bigger Burrito,5,Great,Great,Great,Great
+11/13/2015,Bigger Burrito,5,Great,Great,Great,Great
+11/13/2015,Bigger Burrito,5,Great,Great,Great,Great
+11/13/2015,Bigger Burrito,3,Great,Great,Great,Needs Improvement
+11/13/2015,Bigger Burrito,3,Great,Needs improvement,Great,Needs Improvement
+11/13/2015,Bigger Burrito,5,Great,Great,Great,Great
+11/19/2015,My Thai,4,Great,Great,Great,Great
+11/20/2015,My Thai,4,Great,Great,Needs Improvement,Great
+11/23/2015,My Thai,5,Great,Great,Great,Great
+11/25/2015,My Thai,4,Great,Great,Great,Great
+11/24/2015,O Lounge,5,Great,Great,Great,Great
+11/18/2015,OJ's,5,Great,Great,Great,Great
+11/19/2015,OJ's,4,Great,Needs improvement,Great,Great
+12/2/2015,OJ's,5,Great,Great,Great,Great
+12/4/2015,Premier Kabob,1,Needs improvement,Needs improvement,Needs Improvement,Needs Improvement
+11/12/2015,Peter's Coffee,5,Great,Great,Great,Great
+11/13/2015,Peter's Coffee,5,Great,Great,Great,Great
+11/13/2015,Peter's Coffee,5,Great,Great,Great,Great
+11/18/2015,Orchid,3,Great,Great,Needs Improvement,Great
+11/19/2015,Orchid,4,Great,Needs improvement,Great,Great
+11/23/2015,Pizzzzzza,5,Great,Great,Great,Great
+12/2/2015,Brownie's Bakery,3,Great,Needs improvement,Great,Great
+11/26/2015,Brownie's Bakery,5,Great,Great,Great,Great
+11/16/2015,Manger,4,Great,Needs improvement,Great,Great
+11/16/2015,Manger,5,Great,Great,Great,Great
+11/16/2015,Manger,4,Great,Needs improvement,Great,Great
+11/16/2015,Manger,5,Great,Great,Great,Great
+11/16/2015,Manger,4,Great,Great,Great,Great
+11/17/2015,Manger,5,Great,Great,Great,Great
+11/17/2015,Manger,5,Great,Great,Great,Great
+11/17/2015,Manger,5,Great,Great,Great,Great
+11/17/2015,Manger,5,Great,Great,Great,Great
+11/17/2015,Manger,5,Great,Great,Great,Great
+11/17/2015,Manger,5,Great,Great,Great,Great
+11/17/2015,Manger,4,Great,Great,Great,Great
+11/18/2015,Manger,4,Great,Great,Great,Needs Improvement
+11/18/2015,Manger,5,Great,Great,Great,Great
+11/18/2015,Manger,5,Great,Great,Great,Great
+11/18/2015,Manger,4,Needs improvement,Great,Great,Great
+11/19/2015,Manger,5,Great,Great,Great,Great
+11/19/2015,Manger,5,Great,Great,Great,Great
+11/19/2015,Manger,5,Great,Great,Great,Great
+11/19/2015,Manger,4,Great,Great,Great,Needs Improvement
+11/20/2015,Manger,3,Great,Needs improvement,Needs Improvement,Great
+11/21/2015,Manger,5,Great,Great,Great,Great
+11/26/2015,Pepper Jack,4,Needs improvement,Great,Great,Great
+12/3/2015,Pepper Jack,5,Needs improvement,Great,Great,Great
+11/13/2015,Rock's,5,Great,Great,Great,Great
+11/16/2015,Rock's,5,Great,Great,Great,Great
+11/19/2015,Sisters,5,Great,Great,Great,Great
+11/19/2015,Sisters,5,Needs improvement,Great,Great,Great
+11/19/2015,Sisters,5,Needs improvement,Great,Great,Great
+11/19/2015,Sisters,5,Great,Great,Great,Great
+11/20/2015,Sisters,5,Great,Great,Great,Great
+11/20/2015,Sisters,5,Great,Great,Great,Great
+11/23/2015,Sisters,5,Great,Great,Great,Great
+11/23/2015,Sisters,5,Great,Great,Great,Great
+11/23/2015,Sisters,4,Great,Needs improvement,Great,Great
+11/24/2015,Sisters,1,Great,Needs improvement,Needs Improvement,Great
+11/24/2015,Sisters,3,Needs improvement,Great,Great,Great
+11/24/2015,Sisters,2,Great,Great,Needs Improvement,Great
+11/24/2015,Sisters,4,Great,Needs improvement,Great,Great
+11/24/2015,Sisters,5,Great,Great,Great,Great
+11/25/2015,Sisters,5,Great,Great,Great,Great
+11/25/2015,Sisters,5,Great,Great,Great,Great
+11/25/2015,Sisters,5,Great,Great,Great,Great
+11/25/2015,Sisters,5,Great,Great,Great,Great
+11/25/2015,Sisters,4,Needs improvement,Great,Great,Great
+11/30/2015,Sisters,5,Needs improvement,Great,Great,Great
+11/30/2015,Sisters,5,Great,Great,Great,Great
+12/1/2015,Sisters,4,Needs improvement,Great,Needs Improvement,Great
+12/1/2015,Sisters,5,Great,Great,Great,Great
+12/2/2015,Sisters,5,Great,Great,Great,Great
+12/2/2015,Sisters,4,Great,Great,Great,Great
+11/19/2015,Second Cafe,5,Great,Great,Great,Great
+11/19/2015,Second Cafe,5,Great,Great,Great,Great
+11/20/2015,Second Cafe,5,Great,Great,Great,Great
+11/13/2015,Thai Express,5,Great,Great,Great,Great
+11/13/2015,Thai Express,3,Great,Needs improvement,Great,Great
+11/14/2015,Thai Express,4,Great,Great,Great,Great
+11/16/2015,Thai Express,5,Great,Great,Great,Great
+11/17/2015,Thai Express,4,Great,Great,Great,Great
+11/18/2015,Thai Express,5,Great,Great,Great,Great
+11/19/2015,Thai Express,2,Great,Great,Great,Great
+11/16/2015,Simple Greens,4,Great,Great,Great,Great
+11/25/2015,Simple Greens,4,Great,Great,Great,Great
+11/25/2015,Simple Greens,5,Great,Great,Great,Great
+11/20/2015,Slice of New York,4,Great,Great,Great,Needs Improvement
+11/12/2015,Turtle Cafe,1,Great,Needs improvement,Needs Improvement,Great
+11/13/2015,Turtle Cafe,5,Great,Great,Great,Great
+11/13/2015,Turtle Cafe,5,Great,Great,Great,Great
+11/13/2015,Turtle Cafe,3,Great,Needs improvement,Great,Great
+11/13/2015,Turtle Cafe,4,Great,Great,Great,Great
+11/13/2015,Turtle Cafe,3,Needs improvement,Needs improvement,Needs Improvement,Great
+11/16/2015,Turtle Cafe,5,Great,Great,Great,Great
+11/16/2015,Turtle Cafe,4,Great,Great,Needs Improvement,Great
+11/24/2015,Snap ,5,Great,Great,Great,Great
+11/27/2015,Souvlaki House,5,Great,Great,Great,Great
+12/2/2015,Souvlaki House,5,Great,Great,Great,Great
+11/12/2015,Starfruit ,5,Great,Great,Great,Great
+11/13/2015,Starfruit ,5,Great,Great,Great,Great
+12/2/2015,Kebab Kitchen,3,Great,Needs improvement,Needs Improvement,Great
+11/21/2015,Sushi Place,5,Great,Great,Great,Great
+11/13/2015,Sushi Naniwa,5,Great,Great,Great,Great
+11/13/2015,Sushi Naniwa,5,Needs improvement,Great,Great,Great
+11/13/2015,Sushi Naniwa,4,Great,Great,Great,Great
+11/19/2015,Sushi Ya,5,Great,Great,Great,Great
+12/1/2015,Tacorrito ,4,Great,Great,Great,Great
+12/1/2015,Tacorrito ,5,Great,Great,Great,Great
+12/4/2015,Tacorrito ,5,Needs improvement,Great,Great,Great
+11/30/2015,Tacorrito 2,4,Great,Great,Great,Needs Improvement
+12/4/2015,Tacorrito 2,5,Great,Great,Great,Great
+11/16/2015,Tahini ,4,Great,Great,Great,Great
+11/18/2015,Tahini ,2,Needs improvement,Needs improvement,Needs Improvement,Needs Improvement
+11/20/2015,Tahini ,5,Great,Great,Great,Great
+11/20/2015,Tahini ,5,Great,Great,Great,Great
+11/21/2015,Tahini ,5,Great,Great,Great,Great
+11/19/2015,Ramen,4,Needs improvement,Needs improvement,Great,Great
+11/20/2015,Ramen,4,Great,Great,Great,Great
+11/23/2015,Ramen,3,Great,Great,Great,Needs Improvement
+11/24/2015,Ramen,5,Great,Great,Great,Great
+11/25/2015,Ramen,4,Great,Great,Needs Improvement,Great
+12/1/2015,Thai Please,4,Great,Great,Great,Great
+12/1/2015,Thai Please,5,Great,Great,Great,Great
+12/1/2015,Thai Please,5,Great,Great,Great,Great
+12/1/2015,Thai Please,5,Great,Great,Great,Great
+12/1/2015,Thai Please,5,Great,Great,Great,Great
+12/2/2015,Thai Please,5,Needs improvement,Great,Great,Great
+12/2/2015,Thai Please,5,Great,Great,Great,Great
+12/2/2015,Thai Please,5,Great,Great,Great,Great
+12/3/2015,Thai Please,4,Great,Great,Great,Great
+12/3/2015,Thai Please,5,Great,Great,Great,Great
+12/3/2015,Thai Please,5,Great,Great,Great,Great
+12/3/2015,Thai Please,4,Great,Great,Needs Improvement,Great
+12/3/2015,Thai Please,5,Needs improvement,Great,Great,Great
+12/4/2015,Thai Please,5,Great,Great,Great,Great
+12/8/2015,Thai One,5,Great,Great,Great,Great
+12/8/2015,Thai One,4,Great,Needs improvement,Great,Needs Improvement
+12/2/2015,Fresh Thai,5,Great,Great,Great,Great
+12/4/2015,Fresh Thai,5,Great,Great,Great,Great
+12/7/2015,Fresh Thai,4,Great,Great,Great,Great
+12/7/2015,Fresh Thai,3,Great,Great,Needs Improvement,Great
+11/23/2015,Fish House,5,Great,Great,Great,Great
+11/24/2015,Fish House,5,Great,Great,Great,Great
+11/24/2015,Fish House,3,Great,Great,Needs Improvement,Needs Improvement
+11/24/2015,Fish House,5,Great,Great,Great,Great
+11/30/2015,Fish N Chips,5,Needs improvement,Great,Great,Great
+12/1/2015,Fish N Chips,5,Great,Great,Great,Great
+12/2/2015,Fish N Chips,5,Great,Great,Great,Great
+12/2/2015,Fish N Chips,5,Great,Great,Great,Great
+11/19/2015,Protein House,5,Great,Great,Great,Great
+11/19/2015,Protein House,5,Great,Great,Great,Great
+11/20/2015,Protein House,5,Great,Great,Great,Great
+11/20/2015,Protein House,5,Great,Great,Great,Great
+11/20/2015,Protein House,5,Great,Great,Great,Great
+11/23/2015,Protein House,4,Great,Great,Needs Improvement,Great
+11/23/2015,Protein House,5,Great,Great,Great,Great
+11/23/2015,Protein House,5,Great,Great,Great,Great
+11/23/2015,Protein House,3,Needs improvement,Great,Great,Needs Improvement
+11/23/2015,Protein House,4,Great,Needs improvement,Great,Great
+11/24/2015,Protein House,5,Great,Great,Great,Great
+11/24/2015,Protein House,4,Great,Needs improvement,Great,Great
+11/24/2015,Protein House,5,Great,Great,Great,Great
+11/24/2015,Protein House,4,Great,Needs improvement,Great,Great
+11/24/2015,Protein House,5,Great,Great,Great,Great
+11/25/2015,Protein House,4,Great,Needs improvement,Needs Improvement,Great
+11/25/2015,Protein House,5,Great,Great,Great,Great
+11/30/2015,Protein House,5,Great,Great,Great,Great
+12/1/2015,Protein House,5,Great,Great,Great,Great
+12/3/2015,Protein House,2,Great,Needs improvement,Great,Needs Improvement
+12/3/2015,Protein House,1,Needs improvement,Needs improvement,Needs Improvement,Needs Improvement
+12/7/2015,Protein House,5,Great,Great,Great,Great
+11/20/2015,Protein Place,5,Great,Great,Great,Great
+11/20/2015,Protein Place,5,Great,Great,Great,Great
+11/20/2015,Protein Place,5,Great,Great,Great,Great
+11/20/2015,Protein Place,5,Great,Great,Great,Great
+11/23/2015,Protein Place,4,Great,Great,Great,Great
+11/23/2015,Protein Place,4,Needs improvement,Great,Great,Great
+11/23/2015,Protein Place,2,Needs improvement,Great,Needs Improvement,Great
+11/23/2015,Protein Place,3,Great,Great,Needs Improvement,Great
+11/23/2015,Protein Place,2,Great,Needs improvement,Needs Improvement,Needs Improvement
+11/23/2015,Protein Place,5,Great,Great,Great,Great
+11/23/2015,Protein Place,5,Great,Great,Great,Great
+11/24/2015,Protein Place,4,Great,Great,Great,Great
+11/23/2015,Protein Express,5,Great,Great,Great,Great
+12/4/2015,Protein Express,5,Great,Needs improvement,Needs Improvement,Great
+12/7/2015,Protein Express,5,Great,Great,Great,Great
+11/12/2015,Tony's,5,Great,Great,Great,Great
+11/13/2015,Tony's,3,Great,Great,Great,Needs Improvement
+11/13/2015,Energy Bar,5,Great,Great,Great,Great
+11/13/2015,Energy Bar,5,Needs improvement,Great,Great,Great
+11/16/2015,Energy Bar,5,Great,Great,Great,Great
+11/23/2015,Yorkville Diner,4,Great,Great,Great,Great
+11/27/2015,Yorkville Diner,1,Needs improvement,Needs improvement,Great,Great
+11/13/2015,Bruno's,4,Great,Great,Great,Great
+11/13/2015,Bruno's,3,Needs improvement,Great,Great,Great
+11/19/2015,Bruno's,5,Great,Great,Great,Great
+11/12/2015,Zippy's,4,Great,Great,Great,Great
+11/12/2015,Zippy's,2,Great,Great,Great,Needs Improvement
+11/12/2015,Zippy's,5,Great,Great,Great,Great
+11/15/2015,Zippy's,5,Great,Great,Great,Great
+11/16/2015,Zippy's,5,Great,Great,Great,Great
+11/17/2015,Zippy's,5,Great,Great,Great,Great
+11/17/2015,Zippy's,5,Great,Great,Great,Great
+11/20/2015,Zippy's,5,Great,Great,Great,Great
+11/24/2015,Zippy's,5,Great,Great,Great,Great
+11/26/2015,Zippy's,5,Needs improvement,Great,Great,Great
+11/27/2015,Zippy's,5,Great,Great,Great,Great
