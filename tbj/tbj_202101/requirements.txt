@@ -16,3 +16,4 @@ sklearn
 keras
 openpyxl
 conda
+scikit-optimize
