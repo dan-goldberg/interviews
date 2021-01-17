@@ -29,6 +29,9 @@ Want to know the likelihood of the average shortstop making an out on a given pl
 
 Programmed in python leveraging scikit-learn, tensorflow.keras, and Stan (pyStan). 
 
+- TODO: talk about choice of filters that contstained which plays were considered
+- TODO: talk about target variable, and why that was chosen (i.e address ignoring double plays)
+
 #### 1.1 - Feature Design
 
 Goal was to design features that would be describe the difficulty of the play regardless of where the shortstop was positioned on the field (show picture of starting position).

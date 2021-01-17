@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-from utils.viz_utils import Diamond
-from utils import geometry
+from .viz_utils import Diamond
+from . import geometry
 
 # sklearn preprocessing
 from sklearn.preprocessing import StandardScaler, FunctionTransformer
@@ -38,6 +38,7 @@ def shortstop_global_preprocessing(df):
     # derive valuable vectors for downstream use
     df.loc[:, 'player_point'] = df.apply(lambda x: x[['player_x','player_y']].values, axis=1)
     df.loc[:, 'launch_trajectory_vector'] = df['launch_horiz_ang'].apply(geometry.get_launch_trajectory_vector)
+    df.loc[:, 'landing_location_point'] = df.apply(lambda x: x[['landing_location_x','landing_location_y']].values, axis=1)
 
     # what is the shortest path for the player to the trajectory line of the ball
     df.loc[:, 'orthogonal_interception_point'] = df.apply(lambda x: geometry.get_orthogonal_projection_vector(
@@ -62,6 +63,7 @@ def shortstop_global_preprocessing(df):
     df.loc[:, 'player_time_to_point_of_interest'] = df.apply(lambda x: geometry.distance_between_coords(x['utilized_interception_point'], x['player_point'])/PLAYER_SPEED, axis=1)
     df.loc[:, 'ball_time_to_point_of_interest'] = df.apply(lambda x:  np.linalg.norm(x['utilized_interception_point'])/(geometry.mph_to_feet_per_second(x['launch_speed']*0.95)), axis=1)
     df.loc[:, 'player_time_minus_ball_time'] = df['player_time_to_point_of_interest'] - df['ball_time_to_point_of_interest']
+    df.loc[:, 'distance_from_point_of_interest_to_landing_location'] = df.apply(lambda x: geometry.distance_between_coords(x['utilized_interception_point'], x['landing_location_point']), axis=1)
 
     # once the player has the ball he still has to get it to the base.
     # let's try to guess which base he will want to throw it to
@@ -112,11 +114,7 @@ def shortstop_global_preprocessing(df):
     
     return df
 
-def shortstop_prep_inputs(df):
-    df = df[df['ss_evaluation_play']] # only take plays we care about
-    df = df.set_index('id')
-    
-    feature_columns = [
+def shortstop_prep_inputs(df, feature_columns=[
         'launch_speed',
         'launch_vert_ang',
         'landing_location_radius', # maybe
@@ -124,9 +122,13 @@ def shortstop_prep_inputs(df):
         'player_time_to_point_of_interest',
         'ball_time_to_point_of_interest', # maybe this should be eliminated b/c is superfluous w/ player_time_to_point_of_interest and player_time_minus_ball_time
         'player_time_minus_ball_time', # always positive, lots of 0s for plays made
+        'distance_from_point_of_interest_to_landing_location', # hopefully can distinguish short hops from good hops
         'player_angle_from_interception_point_to_base_of_interest',
         'player_distance_from_interception_point_to_base_of_interest'
-    ]
+]):
+    
+    df = df[df['ss_evaluation_play']] # only take plays we care about
+    df = df.set_index('id')
     
     target_name = 'ss_made_out'
     
