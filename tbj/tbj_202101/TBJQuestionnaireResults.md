@@ -1,3 +1,5 @@
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 # Toronto Blue Jays 2021-01 Questionnaire - Baseball Research Analyst<!-- omit in toc -->
 
 Written by Dan Goldberg, 2021-01-19
