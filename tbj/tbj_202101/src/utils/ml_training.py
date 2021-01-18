@@ -1,3 +1,5 @@
+import datetime
+
 import numpy as np
 
 # sklearn pipelines
@@ -58,6 +60,7 @@ class ModelExperiment:
             objective, 
             space,
             experiment_description,
+            feature_columns,
             target_name,
             n_cross_val = 5
             ):
@@ -90,6 +93,7 @@ class ModelExperiment:
         self.objective = objective
         self.space = space
         self.experiment_description = experiment_description
+        self.feature_columns = feature_columns
         self.target_name = target_name
         self.n_cross_val = n_cross_val
 
@@ -123,21 +127,35 @@ class ModelExperiment:
             scikit-learn estimator parameters
             """
             pipeline.set_params(**params)
-            inner_loop = model_selection.cross_val_score(
-                pipeline,
-                X, 
-                y, 
-                cv=self.n_cross_val, 
-                n_jobs=-1,
-                scoring=scoring
+            result = self._run_cross_validation_scoring(
+                    pipeline,
+                    X, 
+                    y,
+                    scoring = scoring,
+                    params = params
             ) # should be something to minimize
-            result = -np.mean(inner_loop)
-            ModelPersistance.save_model(pipeline, scoring, result, self.experiment_description, self.target_name)
             return result
 
         return gp_minimize_objective
+
+    def _run_cross_validation_scoring(self, pipeline, X, y, scoring, params=None):
+        score = model_selection.cross_val_score(
+                    pipeline,
+                    X, 
+                    y, 
+                    cv=self.n_cross_val, 
+                    n_jobs=-1,
+                    scoring=scoring
+                )
+        result = -np.mean(score)
+        print(datetime.datetime.now(), f'result: {result}', f'params: {params}')
+        ModelPersistance.save_model(pipeline, scoring, result, self.experiment_description, self.feature_columns, self.target_name)
+        return result
 
     def run_gp_inner_loop(self, n_calls=10, **kwargs):
         gp_minimize_objective = self._make_gp_inner_loop()
         res_gp = skopt.gp_minimize(gp_minimize_objective, self.space, n_calls=n_calls, random_state=0, **kwargs)
         return res_gp
+
+    def run_single_cross_validation(self):
+        return self._run_cross_validation_scoring(self.pipeline, self.X, self.y, self.objective)

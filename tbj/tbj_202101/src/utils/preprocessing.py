@@ -17,6 +17,9 @@ PLAYER_SPEED = 21.0
 
 diamond = Diamond()
 
+def identity_function(x):
+    return x
+
 def shortstop_global_preprocessing(df):
     # remove bad data
     df = df.dropna(subset=['fieldingplay']) # there are 2 rows with NULL in fieldingplay column
@@ -128,6 +131,8 @@ def shortstop_prep_inputs(df, feature_columns=[
 ]):
     
     df = df[df['ss_evaluation_play']] # only take plays we care about
+
+    df = df.dropna(subset=feature_columns)
     df = df.set_index('id')
     
     target_name = 'ss_made_out'

@@ -7,13 +7,12 @@ from pathlib import Path
 
 import pandas as pd
 
-MODEL_REGISTRY_DIR = '/Users/dangoldberg/Desktop/code/interviews/tbj/tbj_202101/data/models'
-MODEL_REGISTRY_FILE = f'{MODEL_REGISTRY_DIR}/registry.jsonl' # newline delimited json 
+from __init__ import *
 
 class ModelPersistance:
 
     @staticmethod
-    def save_model(pipeline, objective, objective_value, experiment_description, target_name):
+    def save_model(pipeline, objective, objective_value, experiment_description, feature_columns, target_name):
         """
         Save a pickle file of the trained sklearn style Pipeline, 
         and record info in model registry.
@@ -49,6 +48,7 @@ class ModelPersistance:
                     'timestamp_est': timestamp_est,
                     'model_family': model_description,
                     'params': str(model_params),
+                    'feature_columns': feature_columns,
                     'transformations': transformation_description,
                     'target_name': target_name,
                     'objective_type': str(objective),
