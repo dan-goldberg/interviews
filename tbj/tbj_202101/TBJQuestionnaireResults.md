@@ -6,7 +6,7 @@ Written by Dan Goldberg, 2021-01-19
 
 - [Question 1: Which shortstop converted the most outs above average?](#question-1-which-shortstop-converted-the-most-outs-above-average)
   - [1 - Methodology](#1---methodology)
-    - [1.1 - Feature Design](#11---feature-design)
+    - [1.1 - The Dataset](#11---the-dataset)
     - [1.2 - Candidate Models](#12---candidate-models)
     - [1.3 - Training Method](#13---training-method)
     - [1.4 - Model Evaluation & Selection](#14---model-evaluation--selection)
@@ -21,29 +21,63 @@ Written by Dan Goldberg, 2021-01-19
 
 ## Question 1: Which shortstop converted the most outs above average?
 
-The leader in OAA in this dataset was \[playername\] with \[outs\] converted above average.
+The leader in Outs Above Average (OAA) in this dataset was \[playerid\] with \[outs\] converted above average.
 
 ### 1 - Methodology
 
-Want to know the likelihood of the average shortstop making an out on a given play (i.e. 70%), and observe if the shortstop being evaluated made the play, turning that probabity into 100%, adding the differnce for that particular observation (100% - 70% = 30%). Multivariate input, probability as output, and learning some function from the input to the output that minimizes the log-loss objective. 
+To estimate the OAA metric I decided to follow the lead of [Tom Tango and the Statcast team](https://www.mlb.com/news/statcast-introduces-outs-above-average-for-infield-defense) and train a probabilistic model to predict the likelihood of an average shortstop making an out on a given play. As they explain, using this probability (i.e. 70%) we can then take the observed outcome as a binary variable (0 or 1) and interpret the shortstop of converting that original probability into either 0% (failure) or 100% (success). For example if the shortstop makes the play they would be adding the difference for that particular observation (100% - 70% = 30%) and get that amount of credit (i.e. 0.3 outs above average). 
 
-Programmed in python leveraging scikit-learn, tensorflow.keras, and Stan (pyStan). 
+So the plan was to train a probabilistic model to learn some function from a multivariate input (some features of a given play) to a probability of an average shortstop making an out. To do this I wanted to experiment with different kinds of model families, and different hyperparameter configurations within model families. The space of potential models would be those which could output some probability with respect to a binary outcome, and so each potential model could be optimized against a log-loss objective. 
 
-- TODO: talk about choice of filters that contstained which plays were considered
-- TODO: talk about target variable, and why that was chosen (i.e address ignoring double plays)
+It being my strongest programming language and having a rich statistical ecosystem second only to R, I programmed in python, mostly leveraging scikit-learn. 
 
-#### 1.1 - Feature Design
+#### 1.1 - The Dataset
 
-Goal was to design features that would be describe the difficulty of the play regardless of where the shortstop was positioned on the field (show picture of starting position).
+In exploring and preprocessing the dataset I had two goals in mind. 
 
-<img src="assets/10kStartingPositions.png" width="400" alt="My Image">
+The first goal was to find an appropriate subset of all groundballs that the shortstop should be evaluated on. For example, when the shortstop is on the 3B side of the infield, a groundball to 1B really has nothing to do with the SS (in most cases) and so the SS should not get any credit or blame for an out being or not being made. The SS should only be evaluated on plays the could have potentially had some impact on. I decided as a starting point to filter out any plays that were made by another infielder (i.e. the 3B cuts in front of the SS and then makes the out at first) or any plays that were not turned into outs. This would still include some plays that were completely out of the SS's reach, though I address this in the design of input features for the model.
+
+The second goal was to turn the raw dataset into input features that would describe the difficulty of the groundball (from the SS perspective) in such a way that was agnostic to where the SS was initially positioned. Doing so would require capturing the relative positions of the batted ball and the shortstop no matter where the SS stood. As it turns out, the starting position for a SS varies quite a bit, as seen in this plot of the SS starting position on 10k random groundballs.
+
+<img src="assets/10kStartingPositions.png" width="400" alt="10k Starting Positions">
+
+I decided that there is a lot of information about the difficulty of the play in the batted ball trajectory. From both [Fangraphs](https://library.fangraphs.com/defensive-runs-saved-2020-update/) and [Statcast](https://www.mlb.com/news/statcast-introduces-outs-above-average-for-infield-defense), OAA decomposes a defensive play into the following components of a play: positioning, range, fielding, and throwing, with positioning being a component that the team gets credit for rather than the player. By utilizing the batted ball trajectory I thought I could create some features that captured aspects of range, fielding, and throwing, though certainly imperfectly. The following were some intermediate features I designed using this data:
+- The orthogonal projection from the player position vector to the span of the launch trajectory. This gives the absolutely smallest distance the player would have to move to get in the ball's path (albeit possibly after the ball has passed that point).
+- The inferred interception point, if it exists - the point that minimizes the player's time to the ball's path. This assumes the player moves at 21 ft/s, which is less than the ~25ft/s many players can sprint at, according to Statcast (though still a gross simplification). I used calculations outlined in the [Appendix](#appendix) to solve this minimization equation. 
+- The assumed "base of interest" for the player, depending on the runners on base and whether they are in motion or not. This is a prerequisite for the next feature.
+- The angle to the base of interest at either the inferred interception point, or the orthogonal projection point if that doesn't exist. This is intended to capture an aspect of the player's momentum towards or away from the base the will throw to.
+- The time it takes to get to the intersection point (or orthogonal projection point), where the hypothesis is that less time is better, and gives the defender more time to complete the play. 
+- The difference between the ball's time to the interception point and the SS's time to the interception point. If the ball takes much less time to reach that interception point then it is very unlikely the SS can actually field the ball - this should be quite a reliable indication of whether the play is well outside the fielder's range or not.
+
+I created a visualization tool while exploring the dataset and developing these features which makes these descriptions a bit clearer. The following are some examples of groundball observations from the dataset, which are considered evaluation datapoints for the SS:
+
+<img src="assets/VizExample001.png" width="400" alt="Example 1" style="vertical-align:middle">
+
+In this example you can see the player's starting position as the blue dot, and the span of the ball's launch trajectory as the blue line. The orange dot is where the ball landed, and the red dot is where the player could intercept the ball to minimize time to the ball - in this case since the player is already on the ball's trajectory it would just mean charging the ball. The green dot is indicating that 2B is the base of interest in this case, meaning there's a runner on 1B and a force play at 2B (plus the runner is not in motion).
+
+<img src="assets/VizExample006.png" width="400" alt="Example 2" style="vertical-align:middle">
+
+In the second example you can see a similar situation, except now the ball's trajectory is to the player's left. There is still a red dot indicating there is an inferred interception point. However in this example it is easier to see the orange line, which is the shortest path to the ball's trajectory span, orthogonal to the trajectory. The "angle to the base of interest" feature captures the angle between the green, blue, and red dots, with the blue (player position) as the vertex. In this case the angle is very acute (close to 0) and the player's momentum will be carrying him towards the base as he intercepts the ball at the red dot. 
+
+<img src="assets/VizExample007.png" width="400" alt="Example 6">
+
+This example illustrates a tough play in the hole, and the angle feature will have a much higher value. 
+
+<img src="assets/VizExample003.png" width="400" alt="Example 3">
+<img src="assets/VizExample004.png" width="400" alt="Example 4">
+<img src="assets/VizExample005.png" width="400" alt="Example 5">
+
+Here are more examples, some of which have no red dot, meaning given the player speed assumption the player cannot intercept the ball at all. There are times when a player does intercept the ball despite this calculation not giving an inferred interception point, though this means the SS has likely made a very tough, high-range play. 
+
+All features were standard-scaled before being fed into each model, since some models (like Support Vector Machines) assumed scaled features. 
+
 
 #### 1.2 - Candidate Models
 
-- Individual Model With Probability Output (i.e. Logistic Regression, Neural Network w/Sigmoid Activation, GAM w/Logit Link)
-- Ensemble of non-probabilistic classification models for bootstrapped probability score (i.e. Gradient Boosted or Random Forest Decision Trees)
+- Individual Model With Probability Output (Logistic Regression, Support Vector Machine)
+- Ensemble of non-probabilistic classification models for bootstrapped probability score (i.e. Random Forest Decision Trees)
 
-(Discuss linear vs non-linear )
+(Discuss linear vs non-linear, probability calibration vs not)
 
 #### 1.3 - Training Method
 
@@ -63,7 +97,7 @@ For Bayesian Models (w/ priors on parameters):
 
 ### 2 - Code
 
-My programming efforts focused on creating functionality to make useful visualizations of the data, a generic pipeline for training models, and a way to save models for evaluation and model selection. I also wanted to showcase my skills in building modelling code for production
+My programming efforts focused on creating functionality to make useful visualizations of the data, a generic pipeline for training models, and a way to save models for evaluation and model selection. I also wanted to showcase how I would build experiment code for production.
 
 #### 2.1 - ModelExperiment (utils.ml_training)
 

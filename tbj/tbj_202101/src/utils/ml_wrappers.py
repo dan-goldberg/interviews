@@ -6,13 +6,13 @@ from abc import ABC, abstractmethod
 
 class StanModelWrapper(ABC):
 
-    def __init__(self, model_code=None, model_file=None, fixed_effects_columns=[]):
+    def __init__(self, model_code=None, model_file=None, fixed_effects_columns=[], **kwargs):
         if model_code and model_file:
             raise Exception('You input both a model code and a model file. Which is it? Pick one.')
         elif model_code:
-            self.model = pystan.StanModel(model_code=model_code)
+            self.model = pystan.StanModel(model_code=model_code, **kwargs)
         elif model_file:
-            self.model = pystan.StanModel(file=model_file)
+            self.model = pystan.StanModel(file=model_file, **kwargs)
         else:
             raise Exception('Must input either model_code or model_file.')
 
@@ -47,4 +47,4 @@ class StanLogisticMultilevel1(StanModelWrapper):
     def _predict_with_samples(self, X):
         params = self.fit_results.extract(permuted=True)  # return a dictionary of arrays
         mu = params['fixed_effects']
-        return expit(np.matmul(mu, X[self.fixed_effects_columns].values.T))
+        return expit(np.matmul(mu, X.T))
