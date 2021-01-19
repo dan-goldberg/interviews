@@ -107,7 +107,7 @@ def main():
     preds = (expit(preds_proba) > 0.5).astype(int)
 
     result_logloss = metrics.log_loss(y, preds_proba)
-    result_accuracy = metrics.accuracy(y, preds)
+    result_accuracy = metrics.accuracy_score(y, preds)
 
     print(f'GLMM Logloss: {result_logloss}')
     print(f'GLMM Accuracy: {result_accuracy}')

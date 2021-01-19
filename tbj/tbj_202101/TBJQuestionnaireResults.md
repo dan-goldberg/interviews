@@ -3,6 +3,7 @@
 # Toronto Blue Jays 2021-01 Questionnaire Responses (Baseball Research Analyst)<!-- omit in toc -->
 
 By Dan Goldberg, 2021-01-19
+[Project Github Repository](https://github.com/dan-goldberg/interviews/tree/master/tbj/tbj_202101)
 
 - [Question 1: Which shortstop converted the most outs above average?](#question-1-which-shortstop-converted-the-most-outs-above-average)
   - [1 - Methodology](#1---methodology)
@@ -20,6 +21,7 @@ By Dan Goldberg, 2021-01-19
 - [Question 3: Other than the final leaderboard, what is one interesting or surprising finding you made?](#question-3-other-than-the-final-leaderboard-what-is-one-interesting-or-surprising-finding-you-made)
 - [Appendix](#appendix)
   - [1 - Inferred Interception Point](#1---inferred-interception-point)
+  - [2 - Model Comparison Jupyter Notebook](#2---model-comparison-jupyter-notebook)
 
 ## Question 1: Which shortstop converted the most outs above average?
 
@@ -48,7 +50,7 @@ The leader in Outs Above Average (OAA) in this dataset was playerid 162066 with 
 |     19 |     184486 |             9   |       1.17 |      0.25 |         0.129 |
 |     20 |     121615 |            31.8 |       1.13 |      0.6  |         0.036 |
 
-/* note that this metric excludes outs above average added due to increasing the likelihood of a doubleplay or from tagging basestealers. This only looks at whether the SS made the primary play, getting an out.
+/* note that this metric excludes outs above average added due to increasing the likelihood of a doubleplay or from tagging basestealers. I decided not to try to handle those special, and much tougher, cases; the available data is insufficient to quanitfy those aspects of making outs. Instead, this model only looks at whether the SS got the out making the primary play, being the first to touch the ball.
 
 ### 1 - Methodology
 
@@ -132,7 +134,7 @@ See the python notebook that follows the Appendix in this PDF for the code and g
 ---------------------------------------
 ### 2 - Code
 
-My programming efforts focused on creating functionality to make useful visualizations of the data, a generic pipeline for training models, and a way to save models for evaluation and model selection. I also wanted to showcase how I would try to build experiment code for production.
+My programming efforts focused on creating functionality to make useful visualizations of the data, a generic pipeline for training models, and a way to save models for evaluation and model selection. I also wanted to showcase how I would try to build experiment code for production. Please see the github repository for this project [here](https://github.com/dan-goldberg/interviews/tree/master/tbj/tbj_202101).
 
 #### 2.1 - utils.preprocessing i.e. shortstop_global_preprocessing()
 
@@ -158,18 +160,28 @@ Built as part of exploring the dataset, this class provides a convenient way to 
 ---------------------------------------
 ## Question 2: In addition to what’s included in the provided dataset, what variables or types of information do you think would be helpful in answering this question more effectively? 
 
-- Number of outs at the time of play - impossible to model doubleplays without this (need to know if doubleplay is even possible, or if there's two outs).
-- Actual position of interception - would help break up components of range, field, and throw. Would also be an important step for modelling probability of doubleplay.
+In gathering more information I'd be interested in doing three things:
+1. Be able to model the probability of making a doubleplay.
+2. Be able to estimate the probability of caught stealing at 2B on a stolen base attempt. 
+3. Improving the current model of SS making the primary play.
+
+In the current dataset there isn't enough information to be able to model doubleplay probabilities. A prerequisite for that is knowing the inning outs before the start of the play - we need to know if doubleplay is even possible, or if there's two outs and hence no doubleplay will happen regardless. With that info we could try to model the doubleplay probabilities given the rest of the current information.
+
+Other than that, there is additional information that would be useful for improving both a model of making a primary play and a model of successful doubleplays:
+- Actual position and time of interception - would help break up components of range, field, and throw. 
+- Actual position of other fielders - would be an important step for modelling probability of doubleplay if the SS is the one turning the doubleplay.
 - The handedness of the batter and the speed of the batter - to estimate the batters time to first base.
 - The speed of the baserunners - to estimate the time to their destination base.
-- The handedness of the pitcher, maybe.
-- Accurate spin readings, plus 3D spin, not just 2D spin. 
+- The handedness of the pitcher - probably not super valuable.
+- Accurate spin readings, plus 3D spin, not just 2D spin - balls will fly/bounce differently depending on the spin.
 - The ballpark - they might have different hop profiles for groundballs due to different materials (i.e. turf), groundskeeping, design of infield.
+
+For modelling OAA from tagging a baserunner we would need to create a model predicting the probability of an out when the SS is receiving a throw at a base and there is a baserunner running to that base. For this we would need to track the specific positions (x,y,z) of the ball as it moves towards the base as well as the positions of the baserunner as he moves towards the base (x,y). Then we could quantify the impact of Javier Baez turning into El Mago.
 
 ---------------------------------------
 ## Question 3: Other than the final leaderboard, what is one interesting or surprising finding you made? 
 
-While exploring the shortstop defense dataset I became interested in the launch spin and launch axis measurements. These columns contain much missing data, and I thought that they might be useful for modelling the probability of the shortstop making an out - my hypothesis was that a groundball with top spin or side spin might behave much more erratically than a ball starting with backspin, and that more spin might make some plays like charging plays more difficult. I thought that I would try to impute the missing values in some way to try to utilize the useful information that the non-missing values might have for modelling out probability. To do this I created a model of spin using a few features I thought would be causally related to spin - launch speed and launch angle. 
+While exploring the shortstop defense dataset I became interested in the launch spin and launch axis measurements. These columns contain much missing data, and I thought that they might be useful for modelling the probability of the shortstop making an out - my hypothesis was that a groundball with top spin or side spin might behave much more erratically than a ball starting with backspin, and that more spin might make some plays like charging plays more difficult. I didn't end up using the spin values, but at the time I thought that I would try to impute the missing values in some way to try to utilize the useful information that the non-missing values might have for modelling the out probability. To do this I created a model of spin using a few features I thought would be causally related to spin - launch speed and launch angle (horizontal and vertical). 
 
 ---------------------------------------
 ## Appendix
@@ -227,3 +239,6 @@ $$ c = p_{x}^2 + p_{y}^2$$
 
 which can be solved using the quadratic formula (np.roots in numpy). 
 
+### 2 - Model Comparison Jupyter Notebook
+
+Please see below.
