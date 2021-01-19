@@ -11,4 +11,4 @@ RUN conda install clang_osx-64 clangxx_osx-64 -c anaconda
 RUN export CC=gcc_linux-64 \ 
     && export CXX=g++_linux-64 \
 
-CMD [ "python", "./your-daemon-or-script.py" ]
+#CMD [ "python", "./your-daemon-or-script.py" ]
