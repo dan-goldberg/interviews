@@ -2,7 +2,7 @@
 
 # Toronto Blue Jays 2021-01 Questionnaire Responses (Baseball Research Analyst)<!-- omit in toc -->
 
-By Dan Goldberg, 2021-01-19
+By Dan Goldberg, 2021-01-19  
 [Project Github Repository](https://github.com/dan-goldberg/interviews/tree/master/tbj/tbj_202101)
 
 - [Question 1: Which shortstop converted the most outs above average?](#question-1-which-shortstop-converted-the-most-outs-above-average)
