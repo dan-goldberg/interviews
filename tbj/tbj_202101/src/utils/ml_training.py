@@ -59,6 +59,7 @@ class ModelExperiment:
             feature_preprocessing,
             objective, 
             space,
+            experiment_name,
             experiment_description,
             feature_columns,
             target_name,
@@ -92,6 +93,7 @@ class ModelExperiment:
         self.pipeline = self._make_pipeline(model, feature_preprocessing)
         self.objective = objective
         self.space = space
+        self.experiment_name = experiment_name
         self.experiment_description = experiment_description
         self.feature_columns = feature_columns
         self.target_name = target_name
@@ -103,7 +105,7 @@ class ModelExperiment:
             ('model', model_base)
         ])
 
-    def _make_gp_inner_loop(self):
+    def _make_gp_inner_loop(self, pipeline, X, y):
         """This internal method defines and return the function
         for the gaussian optimization inner loop, gp_minimize_objective().
 
@@ -112,10 +114,8 @@ class ModelExperiment:
             to be passed into skopt.gp_minimize which is the function that 
             the gaussian optimization is trying to minimize
         """
-        pipeline = self.pipeline
+
         scoring = self.objective
-        X = self.X
-        y = self.y
 
         @skopt.utils.use_named_args(self.space)
         def gp_minimize_objective(**params):
@@ -148,14 +148,23 @@ class ModelExperiment:
                     scoring=scoring
                 )
         result = -np.mean(score)
-        print(datetime.datetime.now(), f'result: {result}', f'params: {params}')
-        ModelPersistance.save_model(pipeline, scoring, result, self.experiment_description, self.feature_columns, self.target_name)
+        self._save_model(pipeline, scoring, result, params)
         return result
+    
+    def _save_model(self, pipeline, scoring, result, params):
+        print(datetime.datetime.now(), f'result: {result}', f'params: {params}')
+        ModelPersistance.save_model(pipeline, scoring, result, self.experiment_name, self.experiment_description, self.feature_columns, self.target_name)
 
     def run_gp_inner_loop(self, n_calls=10, **kwargs):
-        gp_minimize_objective = self._make_gp_inner_loop()
+        gp_minimize_objective = self._make_gp_inner_loop(self.pipeline, self.X, self.y)
         res_gp = skopt.gp_minimize(gp_minimize_objective, self.space, n_calls=n_calls, random_state=0, **kwargs)
         return res_gp
 
     def run_single_cross_validation(self):
         return self._run_cross_validation_scoring(self.pipeline, self.X, self.y, self.objective)
+    
+    def run_single_model_eval(self):
+        self.pipeline.fit(self.X, self.y)
+        result = -self.objective(self.pipeline, self.X, self.y)
+        self._save_model(self.pipeline, self.objective, result, params='No BayesOpt')
+        return result

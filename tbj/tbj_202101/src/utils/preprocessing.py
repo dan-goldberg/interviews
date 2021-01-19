@@ -20,6 +20,12 @@ diamond = Diamond()
 def identity_function(x):
     return x
 
+def LogScaleTransformer():
+    return pipeline.make_pipeline(
+        FunctionTransformer(np.log, np.exp),
+        StandardScaler()
+    )
+
 def shortstop_global_preprocessing(df):
     # remove bad data
     df = df.dropna(subset=['fieldingplay']) # there are 2 rows with NULL in fieldingplay column

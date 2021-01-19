@@ -77,7 +77,7 @@ def main():
             needs_proba=True,
             greater_is_better=False
             ),
-        
+        experiment_name = "Logistic Regression No Preprocessing (Baseline)",
         experiment_description = f"""
             Baseline Logistic Regression model using non-transformed inputs, with no extra features added.
 

@@ -21,7 +21,30 @@ Written by Dan Goldberg, 2021-01-19
 
 ## Question 1: Which shortstop converted the most outs above average?
 
-The leader in Outs Above Average (OAA) in this dataset was \[playerid\] with \[outs\] converted above average.
+The leader in Outs Above Average (OAA) in this dataset was playerid 162066 with 11.09 outs above average. I used a fully Bayesian model (Multilevel Logistic Regression) so the leaderboard below has OAA_mean (the estimate of OAA) and OAA_std (the estimate of uncertainty) instead of just OAA. I've also added OAA_per_Opp to give a rate stat next to the counting stat.
+
+|   rank |   playerid |   opportunities |   OAA_mean |   OAA_std |   OAA_per_Opp |
+|-------:|-----------:|----------------:|-----------:|----------:|--------------:|
+|      1 |     162066 |           227.9 |      11.09 |      4.83 |         0.049 |
+|      2 |     162648 |           196.6 |       9.15 |      4.04 |         0.047 |
+|      3 |     197513 |            90.3 |       4.46 |      1.91 |         0.049 |
+|      4 |     154448 |           225.9 |       4.34 |      3.78 |         0.019 |
+|      5 |       9742 |            97.6 |       4.22 |      1.8  |         0.043 |
+|      6 |       2950 |           151.2 |       4.11 |      2.73 |         0.027 |
+|      7 |     168314 |           178.1 |       4.07 |      3.1  |         0.023 |
+|      8 |       5495 |           226.8 |       3.98 |      3.78 |         0.018 |
+|      9 |       9148 |           155.7 |       2.88 |      2.65 |         0.018 |
+|     10 |       9074 |           181   |       2.81 |      3.19 |         0.016 |
+|     11 |     162294 |            50   |       2.67 |      1.13 |         0.053 |
+|     12 |     132551 |           200.5 |       2.65 |      3.5  |         0.013 |
+|     13 |     161551 |           231.2 |       2.36 |      3.51 |         0.01  |
+|     14 |     171164 |            13   |       2.02 |      0.24 |         0.155 |
+|     15 |       5419 |           163.9 |       2.02 |      2.74 |         0.012 |
+|     16 |       7580 |           121.8 |       1.64 |      1.97 |         0.013 |
+|     17 |     167746 |            26.6 |       1.48 |      0.56 |         0.056 |
+|     18 |      11742 |           214.5 |       1.22 |      3.15 |         0.006 |
+|     19 |     184486 |             9   |       1.17 |      0.25 |         0.129 |
+|     20 |     121615 |            31.8 |       1.13 |      0.6  |         0.036 |
 
 ### 1 - Methodology
 
@@ -61,7 +84,7 @@ In the second example you can see a similar situation, except now the ball's tra
 
 <img src="assets/VizExample007.png" width="400" alt="Example 6">
 
-This example illustrates a tough play in the hole, and the angle feature will have a much higher value. 
+This example illustrates a tough play in the hole, where the angle is > 90 degrees to 1B. 
 
 <img src="assets/VizExample003.png" width="400" alt="Example 3">
 <img src="assets/VizExample004.png" width="400" alt="Example 4">
@@ -69,27 +92,40 @@ This example illustrates a tough play in the hole, and the angle feature will ha
 
 Here are more examples, some of which have no red dot, meaning given the player speed assumption the player cannot intercept the ball at all. There are times when a player does intercept the ball despite this calculation not giving an inferred interception point, though this means the SS has likely made a very tough, high-range play. 
 
-All features were standard-scaled before being fed into each model, since some models (like Support Vector Machines) assumed scaled features. 
+All features were standard-scaled before being fed into each model, since some models (like Support Vector Machines) assumed scaled features. I started out also applying a log transform before scaling two of the features, but never progressed to experimenting with different feature scalings. With more time I would've run experiments on scaling and also on withholding certain features; one of my worries about the design matrix I used was high correllation between inputs, which might cause more difficult training for some of the models. Given the time constrains, though, I moved on with what I thought was a solid design matrix. 
 
 
 #### 1.2 - Candidate Models
 
-- Individual Model With Probability Output (Logistic Regression, Support Vector Machine)
-- Ensemble of non-probabilistic classification models for bootstrapped probability score (i.e. Random Forest Decision Trees)
+The most important prerequisite of this modelling exersize was to train a model to output probabilities. A simple classification or even confidence score would not suffice. For this reason there were three classes of models I initially considered:
 
-(Discuss linear vs non-linear, probability calibration vs not)
+1. Generalized linear or non-linear models with inverse logit output (Standard Logistic Regression, Logistic GAM, Logistic Multilevel Regression, Neural Network w/Sigmoid Output)
+
+    These models can be trained on a log-loss (a.k.a. binary cross-entropy) objective which would likely calibrate their probability predictions very nicely (though less-so for neural networks). My guess was that these models would do a better job with calibrated probabilities, but I was also concerned that for the linear models they wouldn't be able to learn how to handle any complex non-linear interactions between features that might exist. Still, the closer I can get my features to reflect the true causal graph, the better a linear model might perform. GAMs are very flexible and was my guess for the best option out of this family, though they are quite manual (I think) and I am not very experienced with GAMs. They would require even more feature engineering to decide on kinds of basis functions applied. 
+
+2. Ensemble of non-probabilistic classification models for bootstrapped probability score (i.e. Random Forest Decision Trees, Gradient Boosted Trees)
+
+    Ensemble models 
+
+3. Other generative models (i.e. Naive Bayes, Mixture of Gaussians, Gaussian Process)
+
+    I thought learning multivariate generative model like a Gaussian Process would been a good candidate since it's so flexible, and would possibly learn a well-calibrated probability, though these models are usually more time-expensive to train. 
 
 #### 1.3 - Training Method
 
-For non Bayesian Models (no priors):
+For non-Bayesian Models (no priors):
 
 - k-fold Cross Validation for evaluating the log-loss objective (inner loop)
 - Bayesian Optimization for Hyperparameter Tuning (outer loop)
 
-For Bayesian Models (w/ priors on parameters):
+For Logistic GAM:
+
+
+
+For Fully Bayesian Models (w/ priors on parameters):
 
 - Using Stan to define model and NUTS optimizer. 
-- Carefully select priors by simulating in output space.
+- Carefully select priors by first simulating in output space (* I didn't do this proper workflow due to time constraints).
 
 #### 1.4 - Model Evaluation & Selection
 

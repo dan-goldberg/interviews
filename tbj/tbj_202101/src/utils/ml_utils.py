@@ -12,7 +12,7 @@ from __init__ import *
 class ModelPersistance:
 
     @staticmethod
-    def save_model(pipeline, objective, objective_value, experiment_description, feature_columns, target_name):
+    def save_model(pipeline, objective, objective_value, experiment_name, experiment_description, feature_columns, target_name):
         """
         Save a pickle file of the trained sklearn style Pipeline, 
         and record info in model registry.
@@ -35,9 +35,21 @@ class ModelPersistance:
 
         # get details for model registry
         model_description = model.__repr__()
-        model_params = model.get_params()
         timestamp_est = str(datetime.datetime.now())
-        transformation_description = str(transformations.transformers)
+
+        # get details for model registry
+        model_description = model.__repr__()
+        try:
+            model_params = model.get_params()
+        except: 
+            # for Stan model
+            model_params = 'n/a'
+
+        if transformations is not None:
+            transformation_description = str(transformations.transformers)
+        else:
+            # for Stan model
+            transformation_description = 'n/a'
 
         # write to registry file
         with open(MODEL_REGISTRY_FILE, 'a') as f:
@@ -53,6 +65,7 @@ class ModelPersistance:
                     'target_name': target_name,
                     'objective_type': str(objective),
                     'objective_value': objective_value,
+                    'experiment_name':experiment_name,
                     'experiment_description':experiment_description
                 }
             ))

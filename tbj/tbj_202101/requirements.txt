@@ -1,6 +1,5 @@
 pandas
 numpy
-jax
 matplotlib
 pystan
 arviz
@@ -17,3 +16,4 @@ keras
 openpyxl
 conda
 scikit-optimize
+scikit-sparse

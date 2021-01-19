@@ -123,46 +123,6 @@ def plot_single_sample(sample):
     base_of_interest: {sample['base_of_interest'].iloc[0]} | angle: {sample['player_angle_from_interception_point_to_base_of_interest'].iloc[0]:.1f}
     player_time: {sample['player_time_to_point_of_interest'].iloc[0]:.2f} | ball_time: {sample['ball_time_to_point_of_interest'].iloc[0]:.2f}""")
 
-    
-def plot_probability_calibration_curve(y, preds, preds_prob, name):
-    
-    from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, log_loss
-    from sklearn.calibration import calibration_curve
-    
-    logloss_score = log_loss(y, preds_prob)
-    
-    print("\tPrecision: %1.3f" % precision_score(y, preds))
-    print("\tRecall: %1.3f" % recall_score(y, preds))
-    print("\tF1: %1.3f" % f1_score(y, preds))
-    print("\tLog-Loss: %1.3f" % logloss_score)
-    print("\tAccuracy: %1.3f\n" % accuracy_score(y, preds))
-
-    prob_pos = preds_prob[:, 1]
-
-    fraction_of_positives, mean_predicted_value = \
-        calibration_curve(y, prob_pos, n_bins=10)
-    
-    fig = plt.figure(figsize=(10, 10))
-    ax1 = plt.subplot2grid((3, 1), (0, 0), rowspan=2)
-    ax2 = plt.subplot2grid((3, 1), (2, 0))
-
-    ax1.plot(mean_predicted_value, fraction_of_positives, "s-",
-             label="%s (%1.3f)" % (name, logloss_score))
-
-    ax2.hist(prob_pos, range=(0, 1), bins=10, label=name,
-             histtype="step", lw=2)
-    ax1.plot([0, 1], [0, 1], "k:", label="Perfectly calibrated")
-    
-    ax1.set_ylabel("Fraction of positives")
-    ax1.set_ylim([-0.05, 1.05])
-    ax1.legend(loc="lower right")
-    ax1.set_title('Calibration plots  (reliability curve)')
-
-    ax2.set_xlabel("Mean predicted value")
-    ax2.set_ylabel("Count")
-    ax2.legend(loc="upper center", ncol=2)
-
-    plt.tight_layout()
 
 
 if __name__ == '__main__':
