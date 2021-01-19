@@ -1,8 +1,8 @@
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-# Toronto Blue Jays 2021-01 Questionnaire - Baseball Research Analyst<!-- omit in toc -->
+# Toronto Blue Jays 2021-01 Questionnaire Responses (Baseball Research Analyst)<!-- omit in toc -->
 
-Written by Dan Goldberg, 2021-01-19
+By Dan Goldberg, 2021-01-19
 
 - [Question 1: Which shortstop converted the most outs above average?](#question-1-which-shortstop-converted-the-most-outs-above-average)
   - [1 - Methodology](#1---methodology)
@@ -11,9 +11,11 @@ Written by Dan Goldberg, 2021-01-19
     - [1.3 - Training Method](#13---training-method)
     - [1.4 - Model Evaluation & Selection](#14---model-evaluation--selection)
   - [2 - Code](#2---code)
-    - [2.1 - ModelExperiment (utils.ml_training)](#21---modelexperiment-utilsml_training)
-    - [2.2 - ModelPersistance (utils.ml_utils)](#22---modelpersistance-utilsml_utils)
-    - [2.3 - Diamond (utils.viz_utils)](#23---diamond-utilsviz_utils)
+    - [2.1 - utils.preprocessing i.e. shortstop_global_preprocessing()](#21---utilspreprocessing-ie-shortstop_global_preprocessing)
+    - [2.2 - utils.geometry i.e. likely_interception_point()](#22---utilsgeometry-ie-likely_interception_point)
+    - [2.3 - utils.ml_training i.e. ModelExperiment](#23---utilsml_training-ie-modelexperiment)
+    - [2.4 - utils.ml_utils i.e. ModelPersistance](#24---utilsml_utils-ie-modelpersistance)
+    - [2.5 - utils.viz_utils i.e. Diamond](#25---utilsviz_utils-ie-diamond)
 - [Question 2: In addition to what’s included in the provided dataset, what variables or types of information do you think would be helpful in answering this question more effectively?](#question-2-in-addition-to-whats-included-in-the-provided-dataset-what-variables-or-types-of-information-do-you-think-would-be-helpful-in-answering-this-question-more-effectively)
 - [Question 3: Other than the final leaderboard, what is one interesting or surprising finding you made?](#question-3-other-than-the-final-leaderboard-what-is-one-interesting-or-surprising-finding-you-made)
 - [Appendix](#appendix)
@@ -21,7 +23,7 @@ Written by Dan Goldberg, 2021-01-19
 
 ## Question 1: Which shortstop converted the most outs above average?
 
-The leader in Outs Above Average (OAA) in this dataset was playerid 162066 with 11.09 outs above average. I used a fully Bayesian model (Multilevel Logistic Regression) so the leaderboard below has OAA_mean (the estimate of OAA) and OAA_std (the estimate of uncertainty) instead of just OAA. I've also added OAA_per_Opp to give a rate stat next to the counting stat.
+The leader in Outs Above Average (OAA) in this dataset was playerid 162066 with 11.09 outs above average. I used a fully Bayesian model (Multilevel Logistic Regression) so the leaderboard below has OAA_mean (the point estimate of OAA) and OAA_std (the uncertainty around that estimate) instead of just OAA. I've also added OAA_per_Opp to give a rate stat next to the counting OAA stat.
 
 |   rank |   playerid |   opportunities |   OAA_mean |   OAA_std |   OAA_per_Opp |
 |-------:|-----------:|----------------:|-----------:|----------:|--------------:|
@@ -92,61 +94,66 @@ This example illustrates a tough play in the hole, where the angle is > 90 degre
 
 Here are more examples, some of which have no red dot, meaning given the player speed assumption the player cannot intercept the ball at all. There are times when a player does intercept the ball despite this calculation not giving an inferred interception point, though this means the SS has likely made a very tough, high-range play. 
 
-All features were standard-scaled before being fed into each model, since some models (like Support Vector Machines) assumed scaled features. I started out also applying a log transform before scaling two of the features, but never progressed to experimenting with different feature scalings. With more time I would've run experiments on scaling and also on withholding certain features; one of my worries about the design matrix I used was high correllation between inputs, which might cause more difficult training for some of the models. Given the time constrains, though, I moved on with what I thought was a solid design matrix. 
+All features were standard-scaled before being fed into each model, since some models (like Support Vector Machines) assumed scaled features. I started out also applying a log transform before scaling two of the features, but never progressed to experimenting with different feature scalings. With more time I would've run experiments on scaling and also on withholding certain features; one of my worries about the design matrix I used was high correlation between inputs, which might cause more difficult training for some of the models. Given the time constrains, though, I moved on with what I thought was a solid design matrix. 
 
 
 #### 1.2 - Candidate Models
 
-The most important prerequisite of this modelling exersize was to train a model to output probabilities. A simple classification or even confidence score would not suffice. For this reason there were three classes of models I initially considered:
+The most important prerequisite of this modelling exercise was to train a model to output probabilities. A simple classification or even confidence score would not suffice. For this reason there were three classes of models I initially considered:
 
 1. Generalized linear or non-linear models with inverse logit output (Standard Logistic Regression, Logistic GAM, Logistic Multilevel Regression, Neural Network w/Sigmoid Output)
 
-    These models can be trained on a log-loss (a.k.a. binary cross-entropy) objective which would likely calibrate their probability predictions very nicely (though less-so for neural networks). My guess was that these models would do a better job with calibrated probabilities, but I was also concerned that for the linear models they wouldn't be able to learn how to handle any complex non-linear interactions between features that might exist. Still, the closer I can get my features to reflect the true causal graph, the better a linear model might perform. GAMs are very flexible and was my guess for the best option out of this family, though they are quite manual (I think) and I am not very experienced with GAMs. They would require even more feature engineering to decide on kinds of basis functions applied. 
+    These models can be trained on a log-loss (a.k.a. binary cross-entropy) objective which would likely calibrate their probability predictions pretty nicely (though less-so for neural networks). My guess was that these models would do a better job with calibrated probabilities, but I was also concerned that for the linear models they wouldn't be able to learn how to handle any complex non-linear interactions between features that might exist. Still, the closer I can get my features to reflect the true causal graph, the better a linear model might perform. GAMs are very flexible and was my guess for the best option out of this family, though they can be quite manual in the design of the basis functions (I think) and I am not very experienced with GAMs. Multilevel models in particular are attractive because they implement partial pooling to decrease variance and improve the estimates on clusters (levels) with low sample size, and inherently reduce overfitting.
 
 2. Ensemble of non-probabilistic classification models for bootstrapped probability score (i.e. Random Forest Decision Trees, Gradient Boosted Trees)
 
-    Ensemble models 
+    Ensemble models have two things going for them - they are fast, and they can make highly accurate class predictions. The downside in this case is that they are not probabilistic, and so they have a good chance of being poorly calibrated in their probability predictions. The only reason they can output what can be used as probability predictions is because they are ensemble models, and so by averaging over multiple component models one can get a sample distribution on an estimate. Ensembles also help reduce overfitting in that many high-variance + low-bias models averaged together create one mid-variance low-bias model. 
 
 3. Other generative models (i.e. Naive Bayes, Mixture of Gaussians, Gaussian Process)
 
-    I thought learning multivariate generative model like a Gaussian Process would been a good candidate since it's so flexible, and would possibly learn a well-calibrated probability, though these models are usually more time-expensive to train. 
+    I thought learning multivariate generative model like a Gaussian Process would been a good candidate since it's so flexible, and would possibly learn a well-calibrated probability, though these models are usually more time-expensive to train. Gaussian processes capture relationships between input vectors in addition to just a function from input to output, so as long as the density across the input space is relatively smooth the GP model should do pretty well, and output decent probability estimates. The rub with Gaussian Processes is in hand designing the kernel (the prior), which is a manual process and adds a lot of complexity when actually trying to make the most out of this model. 
 
 #### 1.3 - Training Method
 
-For non-Bayesian Models (no priors):
+My approach is to pick a suite of models (those listed above) and for each, to determine a hyperparemeter space to search over, if such hyperparameters require tuning for the model family. My hyperparmeter tuning method of choice is Bayesian Optimization (modelling the loss as a function of hyperparams, usually with a Gaussian Process) since it can be so efficient in it's search through that space and intelligently picks the next configuration to try. For each model family I configured an experiment (model family, hyperparameter space, preprocessing pipeline) to automate a search for the best model as much as possible. I spent quite a lot of time programming utilities to help me execute this Bayesian Optimization plan, which in the end made configuring and running experiments extremely easy. The outer loop over hyperarameters just requires an objective to minimize, and I decided the inner loop would return the mean of the loss across 5-fold cross validation on the model at the given config.
 
-- k-fold Cross Validation for evaluating the log-loss objective (inner loop)
-- Bayesian Optimization for Hyperparameter Tuning (outer loop)
+The major exception to this plan was the Multilevel Logistic Regression model, which was a fully Bayesian model and required slightly different tooling, with no hyperparameters. For this model used the python API for Stan to define bespoke model and sample parameters using the NUTS MCMC optimizer. A typical Bayesian workflow would have me carefully select priors by first forward-simulating to output space, though I didn't do this proper workflow due to time constraints; I just did enough work to get the model to converge (which was harder than expected) and used generic priors.
 
-For Logistic GAM:
-
-
-
-For Fully Bayesian Models (w/ priors on parameters):
-
-- Using Stan to define model and NUTS optimizer. 
-- Carefully select priors by first simulating in output space (* I didn't do this proper workflow due to time constraints).
+One thing I didn't do but that would've been good to do for this kind of task was to train the non-probabilistic models using probability calibration cross validation. I left this out of scope out of concern for time, privileging the Bayesian Optimization piece over that to leverage automating experiments as much as possible.
 
 #### 1.4 - Model Evaluation & Selection
 
-- Want out-of-sample Log-Loss, regardless of whether the model was Bayesian or non-Bayesian
+Each model configuration got a 5-fold cross validation score on the log-loss objective, which is the conditional probability of the output data given the model probabilities. It was my hypothesis that training to this objective aligns the model optimization with probability calibration as much as possible. Once all initial model configurations were trained I could read the results into a dataframe from the model registry (where I saved their details) to find the best model (by log-loss) in each experiment. I then compared each experiment's best model on a number of metrics including Brier score, accuracy, F1, as well as visually inspecting their probability calibration curves and their histogram of probability predictions. Finding the best couple models from this inspection, I then directly compared these two models, picking a winner with an eye on having the best probability estimates possible.
 
+See the python notebook that follows the Appendix in this PDF for the code and graphics from model selection and OAA calculation.
+
+---------------------------------------
 ### 2 - Code
 
-My programming efforts focused on creating functionality to make useful visualizations of the data, a generic pipeline for training models, and a way to save models for evaluation and model selection. I also wanted to showcase how I would build experiment code for production.
+My programming efforts focused on creating functionality to make useful visualizations of the data, a generic pipeline for training models, and a way to save models for evaluation and model selection. I also wanted to showcase how I would try to build experiment code for production.
 
-#### 2.1 - ModelExperiment (utils.ml_training)
+#### 2.1 - utils.preprocessing i.e. shortstop_global_preprocessing()
 
-Implements the training scheme for non-Bayesian models, including the inner loop k-fold cross validation, outer loop bayesian optimization, and model saving. 
+This function is where all the feature design and other preprocessing happens. This module has the functionality to load and then convert the raw data into a usable form for any modelling experiments. I decided to abstract away all this processing into a function since my starting point was to have all model experiments share the same features and preprocessing/scaling. This module heavily relies on the utils.geometry module, described below.  
 
-#### 2.2 - ModelPersistance (utils.ml_utils)
+#### 2.2 - utils.geometry i.e. likely_interception_point()
 
-Saves models trained in baysian optimization experiment so it's easy to load the exact model, along with meta-data of the model like parameter settings and the value of objective funciton at those settings. This makes it easy to check on the results of an experiment and load the best model to re-train and deploy. 
+The linear algebra and calculus that I needed to calculate things like the orthogonal projection vector from the player's starting point to the ball's trajectory span, or the likely interception point for the player and ball given some basic assumptions. It was fun figuring out how to put these calculations together - see the [Appendix](#appendix) for the derivation of the likely interception point calculation.
 
-#### 2.3 - Diamond (utils.viz_utils)
+#### 2.3 - utils.ml_training i.e. ModelExperiment
 
-Built as part of exporing the dataset, this class provides a convenient way to plot coordinates on a to-scale diagram of a generic baseball diamond, along with line segments for ball trajectory and player trajectory. 
+Sets up a (model family, hyperparameter space, preprocessing pipeline) experiment configuration. Implements the training scheme for non-Bayesian models, including the inner loop k-fold cross validation, outer loop bayesian optimization, and model saving in the inner loop. Also allows for single k-fold CV scoring without Bayesian Optimization, or simply training a single model, and then saving the output to the model registry.
 
+#### 2.4 - utils.ml_utils i.e. ModelPersistance
+
+Saves models from an experiment so it's easy to load the exact model from a pickle, along with meta-data of the model like parameter settings and the value of objective function at those settings. This makes it easy to check on the results of an experiment and load the best model to re-train and deploy. Includes a method to load the model from pickle, given the model ID.
+
+#### 2.5 - utils.viz_utils i.e. Diamond
+
+Built as part of exploring the dataset, this class provides a convenient way to plot coordinates on a to-scale diagram of a generic baseball diamond, along with line segments for ball trajectory and player trajectory. I used an svg from this [site](https://www.dimensions.com/element/professional-major-league-baseball-field) and confirmed it is to-scale. 
+
+
+---------------------------------------
 ## Question 2: In addition to what’s included in the provided dataset, what variables or types of information do you think would be helpful in answering this question more effectively? 
 
 - Number of outs at the time of play - impossible to model doubleplays without this (need to know if doubleplay is even possible, or if there's two outs).
@@ -157,11 +164,12 @@ Built as part of exporing the dataset, this class provides a convenient way to p
 - Accurate spin readings, plus 3D spin, not just 2D spin. 
 - The ballpark - they might have different hop profiles for groundballs due to different materials (i.e. turf), groundskeeping, design of infield.
 
+---------------------------------------
 ## Question 3: Other than the final leaderboard, what is one interesting or surprising finding you made? 
 
-While exploring the shortstop defense dataset I became interested in the launch spin and launch axis measurements. These columns contain much missing data, and I thought that they might be useful for modelling the probability of the shortstop making an out - my hypothesis was that a groundball with top spin or side spin might behave much more eradically than a ball starting with backspin, and that more spin might make some plays like charging plays more difficult. I thought that I would try to impute the missing values in some way to try to utilize the useful information that the non-missing values might have for modelling out probability. To do this I created a model of spin using a few features I thought would be causally related to spin - launch speed and launch angle. 
+While exploring the shortstop defense dataset I became interested in the launch spin and launch axis measurements. These columns contain much missing data, and I thought that they might be useful for modelling the probability of the shortstop making an out - my hypothesis was that a groundball with top spin or side spin might behave much more erratically than a ball starting with backspin, and that more spin might make some plays like charging plays more difficult. I thought that I would try to impute the missing values in some way to try to utilize the useful information that the non-missing values might have for modelling out probability. To do this I created a model of spin using a few features I thought would be causally related to spin - launch speed and launch angle. 
 
-
+---------------------------------------
 ## Appendix
 
 ### 1 - Inferred Interception Point
@@ -177,7 +185,7 @@ Many important starting-point-agnostic features I built relied on having a parti
 
 We are trying to solve the equation
 $$time_{player}=time_{ball}$$ 
-for unknown $\bold{b} $ if a real root exists. If no real root exists then the player cannot intercept the ball. For this derivation we will make the simplification that the player speed, $s_{player}$, and ball speed, $s_{ball}$, are constant. We know this is incorrect because the player will accellerate or decelerate over time, and the ball will decelerate due to air or ground friction. We also assume the ball doesn't move in a 3rd dimension (up and down) and that the speed is parallel to the ground. 
+for unknown $\bold{b} $ if a real root exists. If no real root exists then the player cannot intercept the ball. For this derivation we will make the simplification that the player speed, $s_{player}$, and ball speed, $s_{ball}$, are constant. We know this is incorrect because the player will accelerate or decelerate over time, and the ball will decelerate due to air or ground friction. We also assume the ball doesn't move in a 3rd dimension (up and down) and that the speed is parallel to the ground. 
 
 $$time_{player}= \frac{\parallel \bold{b} - \bold{p} \parallel}{s_{player}}$$  
 $$time_{ball}= \frac{\parallel \bold{b} \parallel}{s_{ball}}$$
