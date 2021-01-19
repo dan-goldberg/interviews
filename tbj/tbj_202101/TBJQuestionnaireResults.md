@@ -48,6 +48,8 @@ The leader in Outs Above Average (OAA) in this dataset was playerid 162066 with 
 |     19 |     184486 |             9   |       1.17 |      0.25 |         0.129 |
 |     20 |     121615 |            31.8 |       1.13 |      0.6  |         0.036 |
 
+/* note that this metric excludes outs above average added due to increasing the likelihood of a doubleplay or from tagging basestealers. This only looks at whether the SS made the primary play, getting an out.
+
 ### 1 - Methodology
 
 To estimate the OAA metric I decided to follow the lead of [Tom Tango and the Statcast team](https://www.mlb.com/news/statcast-introduces-outs-above-average-for-infield-defense) and train a probabilistic model to predict the likelihood of an average shortstop making an out on a given play. As they explain, using this probability (i.e. 70%) we can then take the observed outcome as a binary variable (0 or 1) and interpret the shortstop of converting that original probability into either 0% (failure) or 100% (success). For example if the shortstop makes the play they would be adding the difference for that particular observation (100% - 70% = 30%) and get that amount of credit (i.e. 0.3 outs above average). 
