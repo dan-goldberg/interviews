@@ -1,5 +1,6 @@
 pandas
 numpy
+<<<<<<< HEAD
 xarray
 matplotlib
 pystan
@@ -13,3 +14,13 @@ openpyxl
 conda
 scikit-optimize
 scikit-sparse
+=======
+matplotlib
+pystan
+statsmodels
+seaborn
+bokeh
+sklearn
+keras
+openpyxl
+>>>>>>> initial commit
