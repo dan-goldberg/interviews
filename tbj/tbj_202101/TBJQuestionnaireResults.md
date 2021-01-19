@@ -181,7 +181,28 @@ For modelling OAA from tagging a baserunner we would need to create a model pred
 ---------------------------------------
 ## Question 3: Other than the final leaderboard, what is one interesting or surprising finding you made? 
 
-While exploring the shortstop defense dataset I became interested in the launch spin and launch axis measurements. These columns contain much missing data, and I thought that they might be useful for modelling the probability of the shortstop making an out - my hypothesis was that a groundball with top spin or side spin might behave much more erratically than a ball starting with backspin, and that more spin might make some plays like charging plays more difficult. I didn't end up using the spin values, but at the time I thought that I would try to impute the missing values in some way to try to utilize the useful information that the non-missing values might have for modelling the out probability. To do this I created a model of spin using a few features I thought would be causally related to spin - launch speed and launch angle (horizontal and vertical). 
+While exploring the shortstop defense dataset I became interested in the launch spin and launch axis measurements. These columns contain much missing data, and I thought that they might be useful for modelling the probability of the shortstop making an out - my hypothesis was that a groundball with top spin or side spin might behave much more erratically than a ball starting with backspin, and that more spin might make some plays like charging plays more difficult. I didn't end up using the spin values, but at the time I thought that I would try to impute the missing values in some way to try to utilize the useful information that the non-missing values might have for modelling the out probability. To do this I eventually created a model of spin using a few features I thought would be causally related to spin - launch speed and launch angle (horizontal and vertical). 
+
+First when I was exploring the dataset I noticed is that there is a weird concentration of launch_spin_rate between approximately 7000 and 8000 rpm. This concentration of density is actual discontinuous with the general, seemingly gaussian density around 3000 rpm. Here is a histogram of launch_spin_rate:
+
+<img src="assets/LaunchSpinRate.png" width="400" alt="Launch Spin Rate Histogram">
+
+This > 7000 rmp density is so separated from the central density, that this is evidence of some separate causal process leading to these high spin measurements. Looking at spin rate compared to launch speed, we still see a clear second density.
+
+<img src="assets/SpinRateVsLaunchSpeed.png" width="400" alt="Spin Rate vs. Launch Speed">
+
+Faulty measurement equipment is one potential theory, though I also thought that it could be caused by something on the field: if a pitcher were using a foreign substance like pine tar it might increase the likelihood of very high spin batted balls. Of course, that possibility could exist no matter what the pitcher does since a batter might contact the ball on a spot of the bat that has pine tar on it (hello George Brett!). These high-spin observations still could be caused by some combination of launch angle and speed, so I decided that I would try to create a model of launch_spin_rate as a function of other launch parameters (angle, speed, hang time, and distance). If the model was unable to predict this second mode at all, then it would be more evidence of a different mechanism at play causing these high spin measurements.
+
+I trained an XGBoost Regressor to predict spin rate from the launch characteristics mentioned above, and this was the result:
+
+<img src="assets/PredictedLaunchSpinRate.png" width="400" alt="XGBoost Predictions of Spin Rate">
+
+And clearly, though the model did pretty well it still leaves a distinct mode between 7000 and 8000 rpm which isn't predicted with anywhere near the same accuracy as the rest of the range. This approach made me think that if a team were interested in figuring out which pitchers use high-grip foreign substance they could create a statistical model of spin rate and find the pitchers with the highest incidence of outliers, as in this case. 
+
+Having said this, my money would still be on equipment measurement error in this case, and I would investigate that hypothesis by looking for in-game correlations between spin rates, controlling for other factors. I didn't go down that route due to time constraints, though I decided that I would ignore the spin values in modelling shortstop OAA.
+
+As an aside, I also thought about using Alan Nathan's [Trajectory Calculator](http://baseball.physics.illinois.edu/trajectory-calculator-new.html) to model/impute the spin measurements, which might also be a good way to try to identify outliers. 
+
 
 ---------------------------------------
 ## Appendix
